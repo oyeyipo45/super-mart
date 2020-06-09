@@ -1,0 +1,31 @@
+{
+  "name": "e_commerce",
+  "version": "1.0.0",
+  "description": "Functional E Commerce Website",
+  "main": "index.js",
+  "scripts": {
+    "server" : "nodemon --watch server --exec babel-node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyeyipo45/E_COMMERCE.git"
+  },
+  "author": "Damilola Oyeyipo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oyeyipo45/E_COMMERCE/issues"
+  },
+  "homepage": "https://github.com/oyeyipo45/E_COMMERCE#readme",
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "nodemon": "^2.0.4"
+  }
+}
