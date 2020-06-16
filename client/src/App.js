@@ -1,12 +1,11 @@
 import React from "react";
-import HomeScreen from './Screens/HomeScreens';
-import ProductScreen from './Screens/ProductScreen';
+import HomeScreen from './screens/HomeScreens';
+import ProductScreen from './screens/ProductScreen';
 import { Route, Link } from 'react-router-dom';
 
 
 
-function App() {
-    
+const App = () => {
     
   const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");

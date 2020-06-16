@@ -10,7 +10,7 @@ const app = express();
 app.get("/api/products", async (req, res, next) => {
     try {
         res.send(data.products);
-        console.log("data", data);
+        // console.log("data", data);
         
     } catch (error) {
         next(error)

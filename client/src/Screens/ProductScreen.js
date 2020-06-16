@@ -1,10 +1,11 @@
 import React from "react";
-import data from "../data/data";
+import data from "../data/data"
 import { Link } from "react-router-dom";
 
-function ProductScreen(props) {
+const ProductScreen = (props) => {
   console.log(props.match.params.id);
-
+  console.log(props);
+  
   const product = data.products.find(
     (clickedProduct) => clickedProduct._id === props.match.params.id
   );

@@ -80,7 +80,7 @@ a:hover{
 /* Home Screen */
 .products {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -88,9 +88,9 @@ a:hover{
 .products li{
   list-style-type: none;
   padding: 0;
-  flex: 0 1 30rem;
+  flex: 0 1 20rem;
   margin: 1rem;
-  height: 50rem;
+  height: 40rem;
   border-bottom: .1rem black solid;
 }
 
@@ -118,7 +118,7 @@ a:hover{
 }
 
 .product-image{
-  max-width: 34rem;
+  max-width: 20rem;
   max-height: 34rem;
 }
 
@@ -140,7 +140,7 @@ a:hover{
 .sidebar{ 
   position: fixed;
   transform: translateX(-30rem);
-  width: 30rem;
+  width: 23rem;
   transition: all .50s;
   height: 100%;
   background-color: #c4c2c2;

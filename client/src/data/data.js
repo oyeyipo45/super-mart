@@ -31,5 +31,25 @@ export default {
       rating: 4.5,
       numReviews: 20,
     },
+    {
+      _id: '4',
+      name: "Good Chairs",
+      category: "chair",
+      image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
+      price: 60,
+      brand: "capenter",
+      rating: 4.5,
+      numReviews: 20,
+    },
+    {
+      _id: '5',
+      name: "Good Pants",
+      category: "pants",
+      image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
+      price: 60,
+      brand: "Nike",
+      rating: 4.5,
+      numReviews: 20,
+    }
   ],
 };
