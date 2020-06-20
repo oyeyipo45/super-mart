@@ -18,16 +18,23 @@ app.get("/api/products", async (req, res, next) => {
 });
 
 
-app.get(`/api/products/:id`, async (req, res, next) => {
+app.get("/api/products/:id", async (req, res, next) => {
     try {
-        const productId = req.params.productId;
-        const product = data.products.find(product => product.id === productId );
+        const productId = req.params.id;
+        const product = data.products.find(prod => prod._id === productId );
+    //    console.log(data.products);
+       
+        // res.send(product);
+        console.log(product);
+    if(product)
         res.send(product);
+    else 
+    res.status(404).send({message: "product not found"})
+        
     } catch (error) {
         next(error)
     }
 });
-
 
 
 app.listen(5004, () =>{

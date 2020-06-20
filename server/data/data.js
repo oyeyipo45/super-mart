@@ -7,50 +7,55 @@ export default {
       name: "Slim Shirt",
       category: "shirts",
       image: 'https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png',
-      price: 60,
+      price: 10,
       brand: "Nike",
       rating: 4.5,
       numReviews: 20,
+      countInStock : 12
     },
     {
       _id: '2',
       name: "Fit Shirt",
       category: "shirts",
       image: 'https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png',
-      price: 60,
+      price: 20,
       brand: "Nike",
       rating: 4.5,
       numReviews: 20,
+      countInStock : 4
     },
     {
       _id: '3',
       name: "Good Pants",
       category: "pants",
       image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
-      price: 60,
+      price: 30,
       brand: "Nike",
       rating: 4.5,
       numReviews: 20,
+      countInStock : 8
     },
     {
       _id: '4',
       name: "Good Pants",
       category: "pants",
       image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
-      price: 60,
+      price: 40,
       brand: "Nike",
       rating: 4.5,
       numReviews: 20,
+      countInStock : 5
     },
     {
       _id: '5',
       name: "Good Pants",
       category: "pants",
       image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
-      price: 60,
+      price: 50,
       brand: "Nike",
       rating: 4.5,
       numReviews: 20,
+      countInStock : 1
     },
     {
       _id: '6',
@@ -61,6 +66,7 @@ export default {
       brand: "Nike",
       rating: 4.5,
       numReviews: 20,
+      countInStock : 10
     }
   ],
 };
