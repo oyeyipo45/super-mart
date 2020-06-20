@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { listProducts } from "../redux/actions/actions";
 
 const HomeScreen = (props) => {
@@ -25,8 +24,8 @@ const HomeScreen = (props) => {
   }, []);
 
   return (
-    loading ? <div>loading .... </div>:
-    error ? <div> {error } </div> : 
+    loading ? <div>loading .... </div> :
+    error ? <div> { error } </div> : 
     <ul className="products">
       {products.map((product) => (
         <li key={product._id}>

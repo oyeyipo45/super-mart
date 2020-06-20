@@ -18,6 +18,17 @@ app.get("/api/products", async (req, res, next) => {
 });
 
 
+app.get(`/api/products/:id`, async (req, res, next) => {
+    try {
+        const productId = req.params.productId;
+        const product = data.products.find(product => product.id === productId );
+        res.send(product);
+    } catch (error) {
+        next(error)
+    }
+});
+
+
 
 app.listen(5004, () =>{
     console.log("app started at port 5004");
