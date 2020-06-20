@@ -191,6 +191,9 @@ a:hover{
   flex: 1 1 20rem;
 }
 
+ul{
+  list-style-type: none;
+}
 .details-info ul, .details-action ul{
   list-style-type: none;
   padding: 0;
@@ -236,4 +239,30 @@ a:hover{
   .down{
     columns: 3;
   }
+}
+
+
+/* Cart */
+
+.cart{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.cart-list{
+  flex: 3 1 60rem
+}
+
+
+.cart-action{
+  flex: 1 1 20rem
+}
+
+
+.cart-action{
+  flex: 1 1 20rem;
+  background-color: blue;
+  border-radius: .5rem;
+  padding: 1rem;
 }
