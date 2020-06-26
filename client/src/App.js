@@ -25,7 +25,7 @@ const App = () => {
           <Link to="/">E_COMMERCE</Link>
         </div>
         <div className="header-links">
-          <a href="cart.html"> Cart</a>
+          <Link to="/cart"> Cart</Link>
           <a href="signin.html">Sign in</a>
         </div>
       </header>

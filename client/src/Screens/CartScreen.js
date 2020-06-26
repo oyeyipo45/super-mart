@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 const CartScreen = (props) => {
   const cart = useSelector((state) => state.cart);
   
+  console.log(cart);
+  
   const { cartItems } = cart;
   console.log("cart-items", cartItems.length);
   
@@ -36,6 +38,7 @@ const CartScreen = (props) => {
   const checkoutHandler = () => {
       props.history.push(`/signin?redirect=shipping`);
   }
+  
   return (
     <div className="cart">
       <div className="cart-list">

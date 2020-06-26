@@ -4,7 +4,7 @@ export default {
   products: [
     {
       _id: '1',
-      name: "Slim Shirt",
+      name: "Slim Shirt 1",
       category: "shirts",
       image: 'https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png',
       price: 10,
@@ -15,7 +15,7 @@ export default {
     },
     {
       _id: '2',
-      name: "Fit Shirt",
+      name: "Fit Shirt 2",
       category: "shirts",
       image: 'https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png',
       price: 20,
@@ -26,7 +26,7 @@ export default {
     },
     {
       _id: '3',
-      name: "Good Pants",
+      name: "Good Pants 3",
       category: "pants",
       image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
       price: 30,
@@ -37,7 +37,7 @@ export default {
     },
     {
       _id: '4',
-      name: "Good Pants",
+      name: "Good Pants 4",
       category: "pants",
       image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
       price: 40,
@@ -48,7 +48,7 @@ export default {
     },
     {
       _id: '5',
-      name: "Good Pants",
+      name: "Good Pants 5",
       category: "pants",
       image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
       price: 50,
@@ -59,7 +59,7 @@ export default {
     },
     {
       _id: '6',
-      name: "Good Pants",
+      name: "Good Pants 6",
       category: "pants",
       image: "https://res.cloudinary.com/dsipecjov/image/upload/v1580717585/ELECTRONIC%20%20STORE/dxq6klfenraufjhsgvim.png",
       price: 60,
