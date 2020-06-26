@@ -4,7 +4,7 @@
   "description": "Functional E Commerce Website",
   "main": "index.js",
   "scripts": {
-    "server" : "nodemon --watch server --exec babel-node server/server.js"
+    "server": "nodemon --watch server --exec babel-node server/server.js"
   },
   "repository": {
     "type": "git",

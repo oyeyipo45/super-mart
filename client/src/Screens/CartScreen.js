@@ -1,82 +1,111 @@
-import React, { useEffect } from 'react'; 
-import { useDispatch } from 'react-redux';
-import addToCart from './../redux/actions/cartAction';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {addToCart, removeFromCart} from "./../redux/actions/cartAction";
+import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+
 
 
 
 
 const CartScreen = (props) => {
-    const cart = useSelector(state => state.cart)
-     console.log(cart);
-    const { cartItems } = cart
-    const productId = props.match.params.id;
-    const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
+  const cart = useSelector((state) => state.cart);
+  
+  const { cartItems } = cart;
+  console.log("cart-items", cartItems.length);
+  
+  const productId = props.match.params.id;
+  const qty = props.location.search
+    ? Number(props.location.search.split("=")[1])
+    : 1;
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    useEffect(() => {
+  useEffect(() => {
+    if (productId) {
+      dispatch(addToCart(productId, qty));
+    }
+  }, []);
 
-        if(productId){
-            dispatch(addToCart(productId, qty))
-        }
-        
-    }, []) 
 
-    return (
+  const removeFromCartHandler = (productId) => {
+      dispatch(removeFromCart(productId))
+  }
+
+
+  const checkoutHandler = () => {
+      props.history.push(`/signin?redirect=shipping`);
+  }
+  return (
     <div className="cart">
-    <div className="cart-list">
-        <ul className="cart-list-container">
-            <h3>Shpooing Cart</h3>
-            <div>Pricc</div>
-            <li>
+      <div className="cart-list">
+           
+           <ul className="cart-list-container">
+           <li>
+           
+           <h3>
+             Shoping Cart
+             </h3>
+            <div>
+              Price
+            </div>
+           </li>
                 {
-                    cartItems.length === 0 ? 
-                    <div>
-                        Cart Is Empty
-                    </div>
-                        :
-                        cartItems.map(item => 
-                        <div key={item.id}>
-                            <img src={item.image} alt="product" />
-                            <div className="cart-name">
-                                <div>
-                                    {item.name}
-                                </div>
-                                <div>
-                                    Qty: 
-                                    <select>
-                                        <option value="1"></option>
-                                        <option value="1"></option>
-                                        <option value="1"></option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                {item.price}
-                            </div>
-                        </div>
-                        
-                            )
+                cartItems.length === 0 ? 
+                <div>
+                  Cart Is Empty
+                  </div>
+                 : 
+                cartItems.map((item) => (
+                  <li key={item.id}>
+                      <div className="cart-image">
+                      <img src={item.image} alt="product" />
+                      </div>
                    
-                }
-            </li>
-        </ul>
-    </div>
-    <div className="cart-action">
-        <h3>
-            Sub Total ( {cartItems.reduce((a, c) => a+ c.qty, 0)} items)
-         :
-         $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0 )}
-        
-        </h3>
-        <button className="button primary" disabled={cartItems.length === 0} >
-            Proceed To Checkout
-        </button>
-    </div>
-    </div>
-    )
-}
+                    <div className="cart-name">
+                      
+                      <div>
+                        <Link to={`/product/${item.id}`}>
+                        {item.name}
+                        </Link>
+                        
+                      </div>
+                      <div>
+                      Qty:
+                        <select value={item.qty} onChange={(e) => dispatch(addToCart(item.id, e.target.value))}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <button type="button" onClick={() => removeFromCartHandler(item.id)} >
+                        Delete
+                        </button>
+                         
+                      </div>
+                    </div>
+                    <div className="cart-price">
+                      ${item.price}
+                      </div>
+                   
+                  </li>
+                )
+                )}
+          </ul>
+      </div>
 
+
+      <div className="cart-action">
+        <h3>
+          Sub Total ( {cartItems.reduce((a, c) => (a + c.qty), 0)} items) : ${" "}
+          {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+        </h3>
+        <button onClick={checkoutHandler}  className="full-width button primary" disabled={cartItems.length === 0}>
+          Proceed To Checkout
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default CartScreen;
+  
