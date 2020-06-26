@@ -1,12 +1,10 @@
-// const express = require("express");
-// const app = express();
-
-// const data = require('./data/data.js')
 import express from "express";
 import data from "./data/data";
 import config from "./config";
 import dotenv from "dotenv";
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+import userRoute from "./routes/userRoutes";
+import morgan from "morgan"
 
 
 const app = express();
@@ -16,12 +14,18 @@ const app = express();
 dotenv.config();
 const mongodbUrl = config.MONGODB_URL;
 
+
 //connecting to MONGO
 mongoose.connect(mongodbUrl,{
-    useNewUrlParser: true 
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+    
 }).catch(error => console.log(error.reason));
 
-
+//APPLY MIDDLEWARE
+app.use(morgan("tiny"))
+app.use("/api/users", userRoute)
 
 
 app.get("/api/products", async (req, res, next) => {
@@ -56,7 +60,7 @@ app.get("/api/products/:id", async (req, res, next) => {
 
 app.listen(5004, () =>{
     console.log("app started at port 5004");
-    console.log(process.env);
+    // console.log(process.env);
     
 })
 
