@@ -8,7 +8,7 @@ const cartItems = Cookie.getJSON("cartItems") || [];
 console.log(cartItems, "inside store");
 
 const initialState = { cartItems }; 
-
+ 
 
 const middleWare = [thunk];
 

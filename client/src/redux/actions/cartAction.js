@@ -18,9 +18,9 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
       }
     });
 
-    // const {cart: {cartItems}} = getState();
-    // Cookie.set("cartItems", JSON.stringify(cartItems));
-    // console.log(cartItems, "inside action");
+    const {cart: {cartItems}} = getState();
+    Cookie.set("cartItems", JSON.stringify(cartItems));
+    console.log(cartItems, "inside action");
     
   
   } catch (error) {
@@ -34,8 +34,8 @@ export const removeFromCart = (productId) => (dispatch, getState) => {
     payload: productId
   });
 
-  // const {cart: {cartItems}} = getState();
-  // Cookie.set("cartItems", JSON.stringify(cartItems));
+  const {cart: {cartItems}} = getState();
+  Cookie.set("cartItems", JSON.stringify(cartItems));
   
 }
 
