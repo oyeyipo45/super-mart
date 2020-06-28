@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoute from "./routes/userRoutes";
 import morgan from "morgan"
+import path from 'path';
 
 
 const app = express();
@@ -26,6 +27,16 @@ mongoose.connect(mongodbUrl,{
 //APPLY MIDDLEWARE
 app.use(morgan("tiny"))
 app.use("/api/users", userRoute)
+
+//SERVE STATIC BUILD FOLDER IF IM PRODUCTION
+if(process.env.NODE_ENV === "production") {
+    //set static folder
+    app.use(express.statis('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirName, 'client', 'build', 'index.html'));
+    })
+}
 
 
 app.get("/api/products", async (req, res, next) => {
