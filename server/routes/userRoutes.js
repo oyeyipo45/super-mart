@@ -4,6 +4,19 @@ import User from '../models/userModel';
 
 const router = express.Router();
 
+router.get('/user', async(req, res) => {
+   User.find()
+   .then((users) => res.json(users))
+   .catch(error => res.json("error from res", error))
+})
+
+
+router.post('/user', (req, res) => {
+   res.send("register")
+})
+ 
+
+
 
 
 router.get('/createadmin', async (req, res, next) => {

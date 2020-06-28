@@ -1,27 +1,28 @@
 import express from "express";
 import data from "./data/data";
 import config from "./config";
-import dotenv from "dotenv";
+
 import mongoose from "mongoose";
 import userRoute from "./routes/userRoutes";
-import morgan from "morgan"
+import morgan from "morgan";
 
 
 const app = express();
  
 
-//adding the MONDBURL TO THE PROCESS.ENV
-dotenv.config();
-const mongodbUrl = config.MONGODB_URL;
+//adding the MONGODBURL TO THE PROCESS.ENV
 
+const  mongodbUrl  = config.MONGODB
 
 //connecting to MONGO
-mongoose.connect(mongodbUrl,{
+mongoose.connect(mongodbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
     
-}).catch(error => console.log(error.reason));
+})
+.then(() => console.log('MongoDB connected..!'))
+.catch(error => console.log("error from server",error.reason));
 
 //APPLY MIDDLEWARE
 app.use(morgan("tiny"))
@@ -60,7 +61,7 @@ app.get("/api/products/:id", async (req, res, next) => {
 
 app.listen(5004, () =>{
     console.log("app started at port 5004");
-    // console.log(process.env);
+   //console.log(process.env.MONGODB_URL);
     
 })
 
