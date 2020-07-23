@@ -35,6 +35,16 @@ mongoose.connect(mongodbUrl, {
 .catch(error => console.log("error from server",error.reason));
 
 
+//SERVE STATIC BUILD FOLDER IF IM PRODUCTION
+if(process.env.NODE_ENV === "production") {
+    //set static folder
+    app.use(express.statis('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirName, 'client', 'build', 'index.html'));
+    })
+}
+
 
 
 

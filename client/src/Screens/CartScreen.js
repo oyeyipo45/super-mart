@@ -99,7 +99,7 @@ const CartScreen = (props) => {
 
       <div className="cart-action">
         <h3>
-          Sub Total ( {cartItems.reduce((a, c) => (a + c.qty), 0)} items) : ${" "}
+          Sub Total ( {cartItems.reduce((a, c) => (a + Number(c.qty)), 0)} items) : ${" "}
           {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
         </h3>
         <button onClick={checkoutHandler}  className="full-width button primary" disabled={cartItems.length === 0}>
