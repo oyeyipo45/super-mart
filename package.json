@@ -4,7 +4,7 @@
   "description": "Functional E Commerce Website",
   "main": "index.js",
   "scripts": {
-    "dev": 
+    "dev": "npm run dev",
     "server": "nodemon --watch server --exec babel-node server/server.js"
   },
   "repository": {
