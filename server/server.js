@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import userRoute from "./routes/userRoutes";
 import productRoute from "./routes/productRoutes";
 import morgan from "morgan";
+import path from "path"
 
 
 const app = express();
@@ -38,7 +39,7 @@ mongoose.connect(mongodbUrl, {
 //SERVE STATIC BUILD FOLDER IF IM PRODUCTION
 if(process.env.NODE_ENV === "production") {
     //set static folder
-    app.use(express.statis('client/build'));
+    app.use(express.static('client/build'));
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirName, 'client', 'build', 'index.html'));
