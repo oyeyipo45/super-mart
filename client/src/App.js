@@ -3,6 +3,7 @@ import HomeScreen from './screens/HomeScreens';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from "./screens/CartScreen";
 import { Route, Link } from 'react-router-dom';
+import SignInscreen from './screens/SignInScreen';
 
 
 
@@ -26,7 +27,7 @@ const App = () => {
         </div>
         <div className="header-links">
           <Link to="/cart"> Cart</Link>
-          <a href="signin.html">Sign in</a>
+          <Link to="/signin">Sign in</Link>
         </div>
       </header>
       <aside className="sidebar">
@@ -49,6 +50,7 @@ const App = () => {
   <Route path="/" exact={true} component={HomeScreen} />
   <Route path="/product/:id" component={ProductScreen} />
   <Route path="/cart/:id?" component={CartScreen} />
+  <Route path="/signin" component={SignInscreen} />
   
           
         </div>
