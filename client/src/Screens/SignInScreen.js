@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import signin from './../redux/actions/userActions';
 
 
-const SignInscreen = (props) => {
+const SignInScreen = (props) => {
 
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
@@ -74,4 +74,4 @@ const SignInscreen = (props) => {
 }
 
 
-export default SignInscreen;
+export default SignInScreen;

@@ -1,9 +1,10 @@
 import React from "react";
-import ProductScreen from './screens/ProductScreen';
 import CartScreen from "./screens/CartScreen";
 import { Route, Link } from 'react-router-dom';
-import SignInscreen from './screens/SignInScreen';
 import HomeScreen from "./screens/HomeScreens";
+import ProductScreen from "./screens/ProductScreen";
+import SignInScreen from "./screens/SignInScreen";
+import CartScreen from "./screens/CartScreen";
 
 
 const App = () => {
@@ -49,7 +50,7 @@ const App = () => {
   <Route path="/" exact={true} component={HomeScreen} />
   <Route path="/product/:id" component={ProductScreen} />
   <Route path="/cart/:id?" component={CartScreen} />
-  <Route path="/signin" component={SignInscreen} />
+  <Route path="/signin" component={SignInScreen} />
   
           
         </div>
