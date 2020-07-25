@@ -1,10 +1,10 @@
 import React from "react";
-import CartScreen from "./screens/CartScreen";
 import { Route, Link } from 'react-router-dom';
-import HomeScreen from "./screens/HomeScreens";
+import CartScreen from "./screens/CartScreen";
+import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import SignInScreen from "./screens/SignInScreen";
-import CartScreen from "./screens/CartScreen";
+
 
 
 const App = () => {
