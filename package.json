@@ -1,12 +1,12 @@
 {
   "name": "e_commerce",
   "version": "1.0.0",
-  "description": "Functional E Commerce Website",
-  "main": "index.js",
+  "description": "E Commerce Website",
+  "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "node server.js",
-    "server": "nodemon --watch server --exec babel-node server/server.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
