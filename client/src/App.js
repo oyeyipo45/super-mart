@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Link } from 'react-router-dom';
-import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 import SignInScreen from "./screens/SignInScreen";
 
 
