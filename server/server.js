@@ -1,9 +1,9 @@
 import express from "express";
 // import data from "./data/data";
-import config from "./server/config";
+import config from "./config";
 import mongoose from "mongoose";
-import userRoute from "./server/routes/userRoutes";
-import productRoute from "./server/routes/productRoutes";
+import userRoute from "./routes/userRoutes";
+import productRoute from "./routes/productRoutes";
 import morgan from "morgan";
 import path from "path"
 
