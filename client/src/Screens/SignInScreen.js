@@ -8,9 +8,9 @@ const SignInScreen = (props) => {
 
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
-  const dispatch = useDispatch();
   const userSignIn = useSelector(state => state.userSignIn);
   const {  loading, userInfo, error } = userSignIn;
+  const dispatch = useDispatch();
     console.log(userInfo);
     console.log(error);
     
@@ -33,38 +33,39 @@ const SignInScreen = (props) => {
 
 
     return (
-        <div className="form">
+        <div className="form signin-form">
             <form onSubmit={submitHandler}>
-                <ul className="form-container">
-                    <li>
-                        <h3>Sign In</h3>
-                    </li>
+                <ul className="form-container ">
+                 
                     {/* <li>{error.message}</li> */}
                     <li>
                         {loading && <div className="alert alert-success"> Signing In ...</div>}
                         {error && <div className="alert alert-danger alert-dismissible fade show">
                             <button type="button" className="close" data-dismiss="alert">&times;</button>Invalid Email or Password</div>}
                     </li>
-                    <li>
+                    <li className="email-container">
                         <label htmlFor="email">
-                            Email
+                            Email address:
                         </label>
-                        <input type="email" name="email" id="email" onChange={((e) => setEmail(e.target.value))}></input>
+                        <input type="email" name="email" id="email" placeholder="Email address" onChange={((e) => setEmail(e.target.value))}></input>
+                        
                     </li>
-                    <li>
+                    <li className="password-container">
                         <label htmlFor="password">
-                            Password
+                            Password:
                         </label>
-                        <input type="password" name="password" id="password" onChange={((e) => setPassword(e.target.value))}></input>
+                        <input type="password" name="password" id="password" placeholder="Password" nChange={((e) => setPassword(e.target.value))}></input>
+                        
                     </li>
+                    
                     <li>
-                        <button type="submit" className="button primary">SignIn </button>
+                        <button type="submit" className="signin-button">Sign in </button>
                     </li>
-                    <li>
-                        New to Lolaine
+                    <li className="forgot-password">
+                        Forgot your Password ?
                     </li>
-                    <li>
-                        <Link to="/register" className="button button-secondary">Create your Lolaine Account</Link>
+                    <li className="signUp-link">
+                        <Link to="/register" className="signUp-link-text">Create your Lolaine Account</Link>
                     </li>
                 </ul>
             </form>

@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <div className="header-container">
       <header className="header">
         <div className="sidebar">
           <div className="brand">
@@ -19,7 +19,7 @@ const Header = () => {
             </button>
           </div>
           <aside className="header-shopping-list">
-            <h3>CATEGORIES</h3>
+            <h3 className="header-shopping-list-heading">CATEGORIES</h3>
             {/* <button className="sidebar-close-button remove" onClick={closeMenu}>
                 x
               </button> */}
@@ -91,8 +91,8 @@ const Header = () => {
             </Link>
           </div>
           <div className="header-links">
-            <Link to="/cart"> Cart</Link>
-            <Link to="/signin">Sign in</Link>
+            <Link to="/cart" className="cart-button"> Cart</Link>
+            <Link to="/signin" className="cart-button">Sign in</Link>
           </div>
         </div>
       </header>

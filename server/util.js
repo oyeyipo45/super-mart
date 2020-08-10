@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken"
-import config from "./config"
+import jwt from "jsonwebtoken";
+import config from "./config";
 
 
 const getToken = (user) => {

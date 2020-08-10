@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { listProducts } from "../redux/actions/productActions";
+import LandingPageCarousel from "./LandingPageCarousel";
 
 const HomeScreen = (props) => {
   // const [products, setProducts] = useState([]);
@@ -24,34 +25,13 @@ const HomeScreen = (props) => {
   }, []);
 
   return loading ? (
-    <div>loading .... </div>
+    <div className="loadingScreen">loading .... </div>
   ) : error ? (
-    <div> {error} </div>
+    <div className="errorScreen"> {error} </div>
   ) : (
     <div>
-      <div className="slides">
-        <div className="landing-background-image-container">
-          {/* <img className="landing-background-image" src="https://res.cloudinary.com/dsipecjov/image/upload/v1595942562/omk96jkkfvnh1nsnhca2.jpg" alt="serene marina" /> */}
-          <div className="landing-text-container">
-            <h3 className="landing-background-text-heading">SHOP WITH US</h3>
-
-            <p className="landing-background-text-body">
-              " et iusto odio dignissimos ducimus qui blanditiis praesentium
-              voluptatum deleniti atque corrupti quos d iusto odio dignissimos
-              ducimus qui blanditiis praesentium voluptatum deleniti atque
-              corrupti
-            </p>
-
-            <button
-              className="landing-background-text-button"
-              id="explore-button"
-            >
-              {" "}
-              Explore{" "}
-            </button>
-          </div>
-        </div>
-      </div>
+      
+        <LandingPageCarousel />
       <ul className="products">
         {products.map((product) => (
           <li key={product._id}>
