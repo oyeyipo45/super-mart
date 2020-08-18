@@ -10,7 +10,6 @@ const CartScreen = (props) => {
   console.log(cart);
 
   const { cartItems } = cart;
-  console.log("cart-items", cartItems.length);
 
   const productId = props.match.params.id;
   const qty = props.location.search
@@ -38,8 +37,8 @@ const CartScreen = (props) => {
       <div className="cart-list">
         <ul className="cart-list-container">
           <li>
-            <h3>Shoping Cart</h3>
-            <div>Price</div>
+            <h3>Shopping Cart</h3>
+            <h3>Price</h3>
           </li>
           {cartItems.length === 0 ? (
             <div className="cart-empty-text">Cart Is Empty</div>
@@ -54,24 +53,37 @@ const CartScreen = (props) => {
                   <div>
                     <Link to={`/product/${item.id}`}>{item.name}</Link>
                   </div>
-                  <div>
-                    Qty:
-                    <select
-                      value={item.qty}
-                      onChange={(e) =>
-                        dispatch(addToCart(item.id, e.target.value))
-                      }
-                    >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                    </select>
+                  <div className="cart-qty">
+                    <div>
+                      Qty:
+                  
+                      <select
+                        value={item.qty}
+                        onChange={(e) =>
+                          dispatch(addToCart(item.id, e.target.value))
+                        }
+                      >
+                       
+                       {[...Array(item.countInStock).keys()].map(
+                    (totalInStock) => (
+                      <option key={totalInStock + 1} value={totalInStock + 1}>
+                        {" "}
+                        {totalInStock + 1}{" "}
+                      </option>
+                    )
+                  )}
+                      </select>
+                    </div>
+
                     <button
+                      className="cart-delete-button"
                       type="button"
                       onClick={() => removeFromCartHandler(item.id)}
                     >
                       Delete
                     </button>
+
+          
                   </div>
                 </div>
                 <div className="cart-price">${item.price}</div>
@@ -90,9 +102,9 @@ const CartScreen = (props) => {
           <li className="cart-action-subTotal">
             <p>
               Sub Total ( {cartItems.reduce((a, c) => a + Number(c.qty), 0)}{" "}
-              items) 
+              items)
             </p>
-            <p> $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</p>
+            <p> ${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</p>
           </li>
 
           <li className="cart-action-total">

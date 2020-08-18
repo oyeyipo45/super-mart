@@ -25,13 +25,16 @@ const HomeScreen = (props) => {
   }, []);
 
   return loading ? (
-    <div className="loadingScreen">loading .... </div>
+    <div className="loadingScreen">
+      <div class="spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
   ) : error ? (
-    <div className="errorScreen"> {error} </div>
+    <div>error</div>
   ) : (
     <div>
-      
-        <LandingPageCarousel />
+      <LandingPageCarousel />
       <ul className="products">
         {products.map((product) => (
           <li key={product._id}>

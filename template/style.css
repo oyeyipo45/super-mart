@@ -1,4 +1,4 @@
-html{
+/* html{
     font-size: 62.5%;
     box-sizing: border-box;
 }
@@ -66,7 +66,7 @@ a:hover{
     color: #ff8000
 }
 
-/* Home Screen */
+
 .products {
     display: flex;
     justify-content: center;
@@ -116,7 +116,6 @@ a:hover{
 }
 
 
-/* Side Bar */
 .brand button{
     color: white;
     font-size: 3rem;
@@ -150,4 +149,4 @@ a:hover{
     position: absolute;
     right:  .5rem;
     top: 1rem;
-}
+} */

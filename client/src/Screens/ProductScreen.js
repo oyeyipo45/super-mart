@@ -21,14 +21,18 @@ const ProductScreen = (props) => {
   };
 
   return (
-    <div>
+    <div className="product-wrapper">
       <div className="back-to-results">
         <Link to="/">Return Back To Results</Link>
       </div>
       {loading ? (
-        <div> loading .. </div>
+        <div className="loadingScreen">
+          <div class="spinner-border text-info" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       ) : error ? (
-        <div> {error}</div>
+        <div>error</div>
       ) : (
         <div className="details">
           <div className="product-brand">
@@ -48,8 +52,7 @@ const ProductScreen = (props) => {
                 <b>Price: ${product.price}</b>
               </li>
               <li>
-                Description:
-                <div>{product.description}</div>
+                <div>Description: {product.description} </div>
               </li>
             </ul>
           </div>
@@ -63,7 +66,7 @@ const ProductScreen = (props) => {
                 Qty:{" "}
                 <select value={qty} onChange={(e) => setQty(e.target.value)}>
                   {[...Array(product.countInStock).keys()].map(
-                    (totalInStock) => ( 
+                    (totalInStock) => (
                       <option key={totalInStock + 1} value={totalInStock + 1}>
                         {" "}
                         {totalInStock + 1}{" "}
