@@ -5,8 +5,12 @@ import Cookie from "js-cookie";
 
 const cartItems = Cookie.getJSON("cartItems") || [];
 console.log(cartItems, "inside store");
+const userInfo = Cookie.getJSON("userInfo") || null
+console.log(userInfo, "inside store");
 
-const initialState = { cartItems };
+
+
+const initialState = { cartItems, userSignIn : {userInfo} };
 
 const middleWare = [thunk];
 
@@ -18,5 +22,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
+
+
 
 export default store;

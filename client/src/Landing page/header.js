@@ -1,7 +1,12 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+
+  const userSignIn = useSelector(state => state.userSignIn) 
+  const {userInfo} = userSignIn;
+
   const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");
   };
@@ -92,7 +97,8 @@ const Header = () => {
           </div>
           <div className="header-links">
             <Link to="/cart" className="cart-button"> Cart</Link>
-            <Link to="/signin" className="cart-button">Sign in</Link>
+            {userInfo ? <Link to="/profile">{userInfo.name}</Link> : <Link to="/signin" className="cart-button">Sign in</Link>}
+            
           </div>
         </div>
       </header>

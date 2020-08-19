@@ -33,6 +33,10 @@ a:hover {
   color: var(--secondary-color);
 }
 
+Link{
+  text-decoration: none;
+}
+
 .loadingScreen{
   width: 100vw;
   height: 100vh;
@@ -540,7 +544,7 @@ ul {
 
 /* ************************** SIGN IN SECTION ************************************************* */
 .signin-form {
-  height: 60vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

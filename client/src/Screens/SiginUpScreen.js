@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {signin} from "./../redux/actions/userActions";
+import {signup} from "./../redux/actions/userActions";
 
-const SignInScreen = (props) => {
+const SignUpScreen = (props) => {
+
+
+    const [firstName, setFirstName] = useState(" ");
+    const [lastName, setLastName] = useState(" ");
   const [email, setEmail] = useState(" ");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(" ");
+  const [repassword, setRepassword] = useState(" ");
   const userSignIn = useSelector((state) => state.userSignIn);
   const { loading, userInfo, error } = userSignIn;
   
@@ -14,9 +19,10 @@ const SignInScreen = (props) => {
   console.log(userInfo, "userINfo");
   console.log(error, "error");
 
+  
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(signin(email, password));
+    dispatch(signup(email, password));
   };
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const SignInScreen = (props) => {
     <div className="form signin-form">
       <form onSubmit={submitHandler}>
         <ul className="form-container ">
-        <li>Sign in</li>
+          <li>Creat Account</li>
           <li>
             {loading && (
               <div className="alert alert-success"> Signing In ...</div>
@@ -43,6 +49,26 @@ const SignInScreen = (props) => {
                 Invalid Email or Password
               </div>
             )}
+          </li>
+          <li className="email-container">
+            <label htmlFor="email">First Name</label>
+            <input
+              type="name"
+              name="name"
+              id="name"
+              placeholder="First Name"
+              onChange={(e) => setFirstName(e.target.value)}
+            ></input>
+          </li>
+          <li className="email-container">
+            <label htmlFor="email">Last Name</label>
+            <input
+              type="name"
+              name="name"
+              id="name"
+              placeholder="Last Name"
+              onChange={(e) => setLastName(e.target.value)}
+            ></input>
           </li>
           <li className="email-container">
             <label htmlFor="email">Email address:</label>
@@ -64,22 +90,28 @@ const SignInScreen = (props) => {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </li>
+          <li className="password-container">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Repeat Password"
+              onChange={(e) => setRepassword(e.target.value)}
+            ></input>
+          </li>
 
           <li>
             <button type="submit" className="signin-button">
               Sign in{" "}
             </button>
           </li>
-          <li className="forgot-password">Forgot your Password ?</li>
-          <li className="signUp-link">
-            <Link to="/signup" className="signUp-link-text">
-              Create your Lolaine Account
-            </Link>
-          </li>
+          <li >Already have an account? <Link to="/signin">Sign in</Link></li>
+          
         </ul>
       </form>
     </div>
   );
 };
 
-export default SignInScreen;
+export default SignUpScreen;
