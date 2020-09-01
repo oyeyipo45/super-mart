@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import HomeScreen from "./../screens/HomeScreen";
-import ProductScreen from "./../screens/ProductScreen";
-import SignInScreen from "./../screens/SignInScreen";
-import CartScreen from './../screens/CartScreen';
-import SignUpScreen from './../screens/SiginUpScreen';
+import ProductScreen from "../screens/ProductScreen";
+import SignInScreen from "../screens/SignInScreen";
+import CartScreen from '../screens/CartScreen';
+import SignUpScreen from '../screens/SiginUpScreen';
+import HomeScreen from './../screens/HomeScreen';
 
 const Body = () => {
     return (
