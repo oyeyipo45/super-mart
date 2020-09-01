@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {signin} from "./../redux/actions/userActions";
 
+
 const SignInScreen = (props) => {
+
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState("");
-  const userSignIn = useSelector((state) => state.userSignIn);
-  const { loading, userInfo, error } = userSignIn;
+  const userSignIn = useSelector(state => state.userSignIn);
+  const { loading, userInfoLoLaine, error } = userSignIn;
   
- 
+  
   const dispatch = useDispatch();
-  console.log(userInfo, "userINfo");
-  console.log(error, "error");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,11 +20,11 @@ const SignInScreen = (props) => {
   };
 
   useEffect(() => {
-    if (userInfo) {
+    if (userInfoLoLaine) {
       props.history.push("/");
     }
     return () => {};
-  }, [userInfo]);
+  }, [userInfoLoLaine]);
 
   return (
     <div className="form signin-form">
@@ -32,17 +32,14 @@ const SignInScreen = (props) => {
         <ul className="form-container ">
         <li>Sign in</li>
           <li>
-            {loading && (
+            {loading && 
               <div className="alert alert-success"> Signing In ...</div>
-            )}
-            {error && (
-              <div className="alert alert-danger alert-dismissible fade show">
-                <button type="button" className="close" data-dismiss="alert">
-                  &times;
-                </button>
-                Invalid Email or Password
+            }
+            {error && 
+              <div className="alert alert-danger">
+               {error.message}
               </div>
-            )}
+            }
           </li>
           <li className="email-container">
             <label htmlFor="email">Email address:</label>

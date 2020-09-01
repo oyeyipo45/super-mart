@@ -10,9 +10,9 @@ import store from "./redux/store"
 ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter>
-  <React.StrictMode>
+  <React.Fragment>
     <App />
-  </React.StrictMode>
+  </React.Fragment>
   </BrowserRouter>
   </Provider>
   ,

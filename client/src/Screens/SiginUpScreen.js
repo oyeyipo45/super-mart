@@ -1,36 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {signup} from "./../redux/actions/userActions";
+import { signup } from "./../redux/actions/userActions";
 
 const SignUpScreen = (props) => {
-
-
-    const [firstName, setFirstName] = useState(" ");
-    const [lastName, setLastName] = useState(" ");
+  const [firstName, setFirstName] = useState(" ");
+  const [lastName, setLastName] = useState(" ");
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const [repassword, setRepassword] = useState(" ");
-  const userSignIn = useSelector((state) => state.userSignIn);
-  const { loading, userInfo, error } = userSignIn;
-  
- 
-  const dispatch = useDispatch();
-  console.log(userInfo, "userINfo");
-  console.log(error, "error");
 
-  
+  const userSignUp = useSelector((state) => state.userSignUp);
+  const { loading, userInfoLoLaine, error } = userSignUp;
+
+  console.log(userInfoLoLaine, "from headersssssssssss");
+  const dispatch = useDispatch();
+
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(signup(email, password));
+    dispatch(signup(firstName, lastName, email, password, repassword));
   };
 
   useEffect(() => {
-    if (userInfo) {
+    if (userInfoLoLaine) {
       props.history.push("/");
     }
     return () => {};
-  }, [userInfo]);
+  }, [userInfoLoLaine]);
 
   return (
     <div className="form signin-form">
@@ -39,7 +35,7 @@ const SignUpScreen = (props) => {
           <li>Creat Account</li>
           <li>
             {loading && (
-              <div className="alert alert-success"> Signing In ...</div>
+              <div className="alert alert-success"> Creating Account ...</div>
             )}
             {error && (
               <div className="alert alert-danger alert-dismissible fade show">
@@ -106,8 +102,9 @@ const SignUpScreen = (props) => {
               Sign in{" "}
             </button>
           </li>
-          <li >Already have an account? <Link to="/signin">Sign in</Link></li>
-          
+          <li>
+            Already have an account? <Link to="/signin">Sign in</Link>
+          </li>
         </ul>
       </form>
     </div>

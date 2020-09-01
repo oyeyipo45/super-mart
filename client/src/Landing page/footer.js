@@ -10,9 +10,9 @@ const Footer = () => {
               <ul>
                 <p className="footer-upper-heading">About</p>
 
-                <li class="footer-list-color"> Damilola</li>
-                <li class="footer-list-color"> Damilola</li>
-                <li class="footer-list-color"> Damilola</li>
+                <li className="footer-list-color"> Damilola</li>
+                <li className="footer-list-color"> Damilola</li>
+                <li className="footer-list-color"> Damilola</li>
               </ul>
             </div>
 
@@ -20,9 +20,9 @@ const Footer = () => {
               <ul>
                 <p className="footer-upper-heading">Shop</p>
 
-                <li class="footer-list-color"> Damilola</li>
-                <li class="footer-list-color"> Damilola</li>
-                <li class="footer-list-color"> Damilola</li>
+                <li className="footer-list-color"> Damilola</li>
+                <li className="footer-list-color"> Damilola</li>
+                <li className="footer-list-color"> Damilola</li>
               </ul>
             </div>
           </div>
@@ -31,8 +31,8 @@ const Footer = () => {
         <div id="copyright">
           <p>All Right Reserved.</p>
           <ul>
-  <li class="footer-list-color">&copy; D.O {new Date().getFullYear()}</li>
-            <li class="footer-list-color">Built By: Damilola Oyeyipo</li>
+  <li className="footer-list-color">&copy; D.O {new Date().getFullYear()}</li>
+            <li className="footer-list-color">Built By: Damilola Oyeyipo</li>
           </ul>
         </div>
       </div>

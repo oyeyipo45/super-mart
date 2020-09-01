@@ -1,11 +1,11 @@
 import express from "express";
 // import data from "./data/data";
-import config from "./config";
+import config from "./server/config";
 import mongoose from "mongoose";
-import userRoute from "./routes/userRoutes";
-import productRoute from "./routes/productRoutes";
+import userRoute from "./server/routes/userRoutes";
+import productRoute from "./server/routes/productRoutes";
 import morgan from "morgan";
-import path from "path"
+import path from "path";
 
 
 const app = express();
@@ -15,14 +15,17 @@ const app = express();
 
 const  mongodbUrl  = config.MONGODB
 
+
+
+//body parser middleware
+app.use(express.json());
+
+
 //APPLY MIDDLEWARE
 app.use(morgan("tiny"))
 app.use("/api/products", productRoute)
 app.use("/api/users", userRoute)
 
-
-//body parser middleware
-app.use(express.json());
 
 
 //connecting to MONGO
@@ -36,7 +39,7 @@ mongoose.connect(mongodbUrl, {
 .catch(error => console.log("error from server",error.reason));
 
 
-//SERVE STATIC BUILD FOLDER IF IM PRODUCTION
+//SERVE STATIC BUILD FOLDER IF IN PRODUCTION
 if(process.env.NODE_ENV === "production") {
     //set static folder
     app.use(express.static('client/build'));
@@ -45,7 +48,6 @@ if(process.env.NODE_ENV === "production") {
         res.sendFile(path.resolve(__dirName, 'client', 'build', 'index.html'));
     })
 }
-
 
 
 
