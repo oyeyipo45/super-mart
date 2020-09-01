@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {signin} from "../redux/actions/userActions";
+import {signin} from "./../redux/actions/userActions";
 
 
-const signInScreen = (props) => {
+const SignInScreen = (props) => {
 
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState("");
@@ -79,4 +79,4 @@ const signInScreen = (props) => {
   );
 };
 
-export default signInScreen;
+export default SignInScreen;

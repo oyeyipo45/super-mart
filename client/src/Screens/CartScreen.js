@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/actions/cartAction";
+import { addToCart, removeFromCart } from "./../redux/actions/cartAction";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const cartScreen = (props) => {
+const CartScreen = (props) => {
   const cart = useSelector((state) => state.cart);
 
   console.log(cart);
@@ -132,4 +132,4 @@ const cartScreen = (props) => {
   );
 };
 
-export default cartScreen;
+export default CartScreen;

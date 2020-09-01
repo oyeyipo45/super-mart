@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { signup } from "../redux/actions/userActions";
+import { signup } from "./../redux/actions/userActions";
 
-const signUpScreen = (props) => {
+const SignUpScreen = (props) => {
   const [firstName, setFirstName] = useState(" ");
   const [lastName, setLastName] = useState(" ");
   const [email, setEmail] = useState(" ");
@@ -111,4 +111,4 @@ const signUpScreen = (props) => {
   );
 };
 
-export default signUpScreen;
+export default SignUpScreen;

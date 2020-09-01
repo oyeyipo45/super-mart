@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import productScreen from "../screens/productScreen";
-import signInScreen from "../screens/signInScreen";
-import cartScreen from '../screens/cartScreen';
-import signUpScreen from '../screens/siginUpScreen';
-import homeScreen from '../screens/homeScreen';
+import ProductScreen from "../screens/productScreen";
+import SignInScreen from "../screens/signInScreen";
+import CartScreen from '../screens/cartScreen';
+import SignUpScreen from '../screens/siginUpScreen';
+import HomeScreen from '../screens/homeScreen';
 
 const Body = () => {
     return (
@@ -12,11 +12,11 @@ const Body = () => {
           <main className="main">
         
         <div className="content">
-          <Route path="/" exact={true} component={homeScreen} />
-          <Route path="/product/:id" component={productScreen} />
-          <Route path="/cart/:id?" component={cartScreen} />
-          <Route path="/signin" component={signInScreen} />
-          <Route path="/signup" component={signUpScreen} />
+          <Route path="/" exact={true} component={HomeScreen} />
+          <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/cart/:id?" component={CartScreen} />
+          <Route path="/signin" component={SignInScreen} />
+          <Route path="/signup" component={SignUpScreen} />
         </div>
       </main>
         </div>

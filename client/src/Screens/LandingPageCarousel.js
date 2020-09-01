@@ -30,7 +30,7 @@ const items = [
   }
 ];
 
-const landingPageCarousel = (props) => {
+const LandingPageCarousel = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -62,7 +62,7 @@ const landingPageCarousel = (props) => {
       >
 
    
-        <img className="l-carousel" src={item.src} alt={item.altText} />
+        <img className="landing-carousel" src={item.src} alt={item.altText} />
         <div className="landing-carousel-wrapper">
         <CarouselCaption className="landing-carousel-text-1" captionHeader={item.caption}     />
         
@@ -89,4 +89,4 @@ const landingPageCarousel = (props) => {
   );
 }
 
-export default landingPageCarousel;
+export default LandingPageCarousel;
