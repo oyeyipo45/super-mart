@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { listProducts } from "../redux/actions/productActions";
-import LandingPageCarousel from "./LandingPageCarousel";
+import landingPageCarousel from "./landingPageCarousel";
 
-const HomeScreen = (props) => {
+const homeScreen = (props) => {
   // const [products, setProducts] = useState([]);
 
   const productList = useSelector((state) => state.productList);
@@ -64,4 +64,4 @@ const HomeScreen = (props) => {
   );
 };
 
-export default HomeScreen;
+export default homeScreen;

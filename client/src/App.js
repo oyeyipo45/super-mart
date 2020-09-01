@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Index from "./LandingPage/index";
+import Index from "./landingPage/index";
 
 
 
