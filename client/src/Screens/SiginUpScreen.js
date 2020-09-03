@@ -17,8 +17,20 @@ const SignUpScreen = (props) => {
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(signup(firstName, lastName, email, password, repassword));
+    // e.preventDefault();
+    // dispatch(signup(firstName, lastName, email, password, repassword));
+
+
+
+    if (firstName === "" || lastName === "") {
+      return e.preventDefault(alert("Please Fill Fields"));
+      } else if (email === "" || password === "") {
+      return e.preventDefault(alert("Please Fill Fields"));
+        }  else {
+        e.preventDefault(alert("Please Fill Fields"))
+    }
+    e.preventDefault()
+       dispatch(signup(firstName, lastName, email, password, repassword));
   };
 
   useEffect(() => {
@@ -99,7 +111,7 @@ const SignUpScreen = (props) => {
 
           <li>
             <button type="submit" className="signin-button">
-              Sign in{" "}
+              Sign up
             </button>
           </li>
           <li>

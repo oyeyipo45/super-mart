@@ -53,7 +53,7 @@ if(process.env.NODE_ENV === "production") {
 
 app.listen(5004, () =>{
     console.log("app started at port 5004");
-  // console.log(process.env.SECRET);
+  
     
 })
 

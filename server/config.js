@@ -6,4 +6,3 @@ export default {
     SECRET : process.env.SECRET
 }
 
-// || 'mongodb://localhost/e_commerce'

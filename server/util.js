@@ -2,18 +2,15 @@ import jwt from "jsonwebtoken";
 import config from "./config";
 
 
+
 const getToken = (user) => {
   
   return jwt.sign(
     {
-      _id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      isAdmin: user.isAdmin,
+      _id: user.id
     },
     config.SECRET,
-    { algorithm: 'HS256', expiresIn: '1h' }
+    { algorithm: 'HS256', expiresIn: 3660 }
   );
 };
 

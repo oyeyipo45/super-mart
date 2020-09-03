@@ -8,6 +8,7 @@ const Header = (props) => {
   const userSignIn = useSelector(state => state.userSignIn) 
   const {userInfoLoLaine} = userSignIn;
 
+
   const dispatch = useDispatch()
 
   const handleLogout = () => {
@@ -105,7 +106,7 @@ const Header = (props) => {
           </div>
           <div className="header-links">
             <Link to="/cart" className="cart-button"> Cart</Link>
-            {userInfoLoLaine ? <Link to="/signin" onClick={handleLogout}>{userInfoLoLaine.firstName}</Link> : <Link to="/signin" className="cart-button">Sign in</Link>}
+            {userInfoLoLaine ? <Link to="/signin" onClick={handleLogout}>{userInfoLoLaine.user.firstName}</Link> : <Link to="/signin" className="cart-button">Sign in</Link>}
             
           </div>
         </div>

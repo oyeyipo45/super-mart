@@ -1,14 +1,17 @@
 import express from "express";
 import User from "../models/userModel";
 import getToken from "../util";
+import bcrypt from "bcryptjs";
+import auth from "../middleware/auth";
+
 
 const router = express.Router();
-router.get("/", async (req, res) => {
 
-  console.log(req.body);
+router.get("/", async (req, res) => {
   User.find()
     .then((users) => res.json(users))
     .catch((error) => res.json("error from res", error));
+    
 });
 
 router.get("/user", async (req, res) => {
@@ -17,70 +20,133 @@ router.get("/user", async (req, res) => {
     .catch((error) => res.json("error from res", error));
 });
 
-// router.post("/user", (req, res) => {
-//   res.send("register");
-// });
 
-router.post("/signin", async (req, res) => { 
-  
-  try {
+
+
+// @route POST api/users
+// @desc REGISTER NEW USER
+// @access PUBLIC
+
+router.post("/signin", async (req, res) => {
+  const {email, password } = req.body;
+
+  //SIMPLE VALIDATION
+  if ( !email || !password) {
+    return res.status(400).json({ message: "Please Fill All Fields" });
+  }
+
+  //CHECK FOR EXISTING USER
+  User.findOne({ email }).then((user) => {
+    if (!user) {
+      return res.status(400).json({ message: "user Does not exists" });
+    } 
+
+    //VALIDATE PASSWORD
+    bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if(!isMatch) return res.status(400).json({ message: "Invalid Credentials"})
+        
+          res.json({
+            user: {
+              _id: user.id,
+              firstName: user.firstName,
+                lastName: user.lastName,
+              email: user.email,
+              token: getToken(user),
+            }
+          });
+        })
+
+
+      //CREATE SALE $ HASH
+      // bcrypt.genSalt(10, (err, salt) => {
+      //   bcrypt.hash(newUser.password, salt, (err, hash) => {
+      //     if (err) throw err;
+      //     newUser.password = hash;
+      //     newUser.save()
+      //     .then((user) => {
+          
+      //       res.json({
+      //         user: {
+      //           _id: user.id,
+      //           email: user.email,
+      //           token: getToken(user),
+      //         },
+      //       });
+      //     });
+      //   });
+      // });
     
-    const signinUser = await User.findOne
-    ({
-      email: req.body.email,
-      password: req.body.password,
-    });
-    if(!signinUser){
-      return res.status(403).json({
-        message: 'Wrong email or password.'
-      });
-    } else if (signinUser) {
-      res.send({
-        _id: signinUser._id,
-        firstName: signinUser.firstName,
-        lastName: signinUser.lastName,
-        email: signinUser.email,
-        isAdmin: signinUser.isAdmin,
-        token: getToken(signinUser),
-      });
+  });
+});
+
+
+// @route POST api/users/auth
+// @desc REGISTER NEW USER
+// @access PRIVATE
+router.get("/signin/auth", auth, async(req, res) => {
+  try {
+    User.findById(req.user._id)
+  // .select('-password')
+  .then(user => res.json(user))
+  } catch (error) {
+     error => error.message
+  }
+})
+
+
+
+
+
+
+// @route POST api/users
+// @desc REGISTER NEW USER
+// @access PUBLIC
+
+router.post("/signup", async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+
+  //SIMPLE VALIDATION
+  if (!firstName || !lastName || !email || !password) {
+    return res.status(400).json({ message: "Please Fill All Fields" });
+  }
+
+  //CHECK FOR EXISTING USER
+  User.findOne({ email }).then((user) => {
+    if (user) {
+      return res.status(400).json({ message: "user already exists" });
     } else {
-      res.status(401).send({ message: "Invalid Email or Password" });
+      const newUser = new User({
+       
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+
+      //CREATE SALE $ HASH
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser.save()
+          .then((user) => {
+          
+            res.json({
+              user: {
+                _id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                token: getToken(user),
+              },
+            });
+          });
+        });
+      });
     }
-    
-  } catch (error) {
-    return (error.message);
-  }
+  });
 });
-
-
-router.post("/signup", async (req, res) => { 
-  
-  try {
-    const user = new User({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: req.body.password,
-    });
-
-    const newUser = await user.save();
-    if(newUser){
-      res.send({
-        _id:newUser._id,
-        firstName: newUser.firstName,
-      lastName: newUser.lastName,
-      email: newUser.email,
-      isAdmin: newUser.isAdmin,
-      token: getToken(newUser)
-      })
-    }
-    console.log(newUser);
-    
-  } catch (error) {
-    return (error.message);
-  }
-});
-
 
 router.get("/createadmin", async (req, res, next) => {
   try {
@@ -101,3 +167,106 @@ router.get("/createadmin", async (req, res, next) => {
 });
 
 export default router;
+
+// import express from "express";
+// import User from "../models/userModel";
+// import getToken from "../util";
+// import { config } from 'config';
+
+// const router = express.Router();
+
+// router.get("/", async (req, res) => {
+
+//   User.find()
+//     .then((users) => res.json(users))
+//     .catch((error) => res.json("error from res", error));
+// });
+
+// router.get("/user", async (req, res) => {
+//   User.find()
+//     .then((users) => res.json(users))
+//     .catch((error) => res.json("error from res", error));
+// });
+
+// router.post("/signin", async (req, res) => {
+
+//   try {
+
+//     const signinUser = await User.findOne
+//     ({
+//       email: req.body.email,
+//       password: req.body.password,
+//     });
+//     if(!signinUser){
+//       return res.status(403).json({
+//         message: 'Wrong email or password.'
+//       });
+//     } else if (signinUser) {
+//       res.send({
+//         _id: signinUser._id,
+//         firstName: signinUser.firstName,
+//         lastName: signinUser.lastName,
+//         email: signinUser.email,
+//         isAdmin: signinUser.isAdmin,
+//         token: getToken(signinUser),
+//       });
+//     } else {
+//       res.status(401).send({ message: "Invalid Email or Password" });
+//     }
+
+//   } catch (error) {
+//     return (error.message);
+//   }
+// });
+
+// // @route POST api/users
+// // @desc REGISTER NEW USER
+// // @access PUBLIC
+
+// router.post("/signup", async (req, res) => {
+
+//   try {
+//     const user = new User({
+//       firstName: req.body.firstName,
+//       lastName: req.body.lastName,
+//       email: req.body.email,
+//       password: req.body.password,
+//     });
+
+//     const newUser = await user.save();
+//     if(newUser){
+//       res.send({
+//         _id:newUser._id,
+//         firstName: newUser.firstName,
+//       lastName: newUser.lastName,
+//       email: newUser.email,
+//       isAdmin: newUser.isAdmin,
+//       token: getToken(newUser)
+//       })
+//     }
+//     console.log(newUser);
+
+//   } catch (error) {
+//     return (error.message);
+//   }
+// });
+
+// router.get("/createadmin", async (req, res, next) => {
+//   try {
+//     const user = new User({
+//       firstName: "damilola",
+//       lastName: "oyeyipo",
+//       email: "damilola45@gmail.com",
+//       password: "1234",
+//       isAdmin: true,
+//     });
+
+//     const newUser = await user.save();
+//     console.log(newUser);
+//     res.send(newUser);
+//   } catch (error) {
+//     return next(error.message);
+//   }
+// });
+
+// export default router;
