@@ -1,62 +1,109 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { signup } from "./../redux/actions/userActions";
+import { signup } from "../redux/actions/authActions";
+import { clearErrors } from "../redux/actions/errorAction";
+import PropTypes from "prop-types";
 
 const SignUpScreen = (props) => {
-  const [firstName, setFirstName] = useState(" ");
-  const [lastName, setLastName] = useState(" ");
-  const [email, setEmail] = useState(" ");
-  const [password, setPassword] = useState(" ");
-  const [repassword, setRepassword] = useState(" ");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repassword, setRepassword] = useState("");
+  const [errormessage, setErrorMessage] = useState(null);
 
-  const userSignUp = useSelector((state) => state.userSignUp);
-  const { loading, userInfoLoLaine, error } = userSignUp;
+  SignUpScreen.propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    signup: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired
+  };
 
-  console.log(userInfoLoLaine, "from headersssssssssss");
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const error = useSelector((state) => state.error);
+  // const {message, status, id } = error;
+
+  // const clearErrors = useSelector((state) => state.clearErrors);
+
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
-    // e.preventDefault();
-    // dispatch(signup(firstName, lastName, email, password, repassword));
+    e.preventDefault();
+    // if (firstName === "" || lastName === "") {
+    //   return e.preventDefault(alert("Please Fill Fields"));
+    //   } else if (email === "" || password === "") {
+    //   return e.preventDefault(alert("Please Fill Fields"));
+    //     }  else {
+    //     e.preventDefault(alert("Please Fill Fields"))
+    // }
 
+    //CREATE NEW USER
 
-
-    if (firstName === "" || lastName === "") {
-      return e.preventDefault(alert("Please Fill Fields"));
-      } else if (email === "" || password === "") {
-      return e.preventDefault(alert("Please Fill Fields"));
-        }  else {
-        e.preventDefault(alert("Please Fill Fields"))
+    if (password !== repassword) {
+      setErrorMessage( 'Passwords do not match' );
+    } else {
+      const newUser = {
+        firstName,
+        lastName,
+        email,
+        password,
+      };
+  
+      dispatch(clearErrors())
+  
+      //REGISTER USER
+      dispatch(signup(newUser));
     }
-    e.preventDefault()
-       dispatch(signup(firstName, lastName, email, password, repassword));
+   
   };
 
   useEffect(() => {
-    if (userInfoLoLaine) {
-      props.history.push("/");
-    }
+    
+      if (error.id === "SIGNUP_FAIL") {
+        setErrorMessage({ message: error.message.message });
+      } else {
+        setErrorMessage({ message: null });
+      }
+
+      //IF AUTHENTICATED REDIRECT TO HOME
+       if (isAuthenticated) {
+       return  props.history.push("/");
+      }
+
+    
+
     return () => {};
-  }, [userInfoLoLaine]);
+  }, [error.message.message], isAuthenticated);
+
+  const clearErrorAlert = () => {
+    dispatch(clearErrors())
+  }
+  
+
+  
 
   return (
     <div className="form signin-form">
       <form onSubmit={submitHandler}>
         <ul className="form-container ">
-          <li>Creat Account</li>
+          <li>Create Account</li>
           <li>
+            {/*
             {loading && (
               <div className="alert alert-success"> Creating Account ...</div>
             )}
-            {error && (
+             */}
+            {error.id ? (
               <div className="alert alert-danger alert-dismissible fade show">
-                <button type="button" className="close" data-dismiss="alert">
+                <button type="button"  onClick ={clearErrorAlert()} className="close" data-dismiss="alert">
                   &times;
                 </button>
-                Invalid Email or Password
+                {error.message.message}
               </div>
-            )}
+            ): null}
+            
           </li>
           <li className="email-container">
             <label htmlFor="email">First Name</label>

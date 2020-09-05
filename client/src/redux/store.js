@@ -5,12 +5,12 @@ import Cookie from "js-cookie";
 
 const cartItems = Cookie.getJSON("cartItems") || [];
 console.log(cartItems, "inside store");
-const userInfoLoLaine = Cookie.getJSON("userInfoLoLaine") || null
-console.log(userInfoLoLaine, "inside store");
+// const userInfoLoLaine = Cookie.getJSON("userInfoLoLaine") || null
+// console.log(userInfoLoLaine, "inside store");
 
 
 
-const initialState = { cartItems, userSignIn : {userInfoLoLaine} };
+const initialState = { cartItems };
 
 const middleWare = [thunk];
 

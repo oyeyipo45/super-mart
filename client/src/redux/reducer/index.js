@@ -1,14 +1,17 @@
 import { combineReducers } from "redux";
 import {productListReducer, productsDetailsReducer} from "./productReducer";
 import cartReducer from './cartReducer';
-import { userSigninReducer, userSignupReducer } from './userReducer';
+import { authReducer } from './authReducer';
+import { errorReducer } from './errorReducer';
+
+
 
 const rootReducer = combineReducers({
     productList: productListReducer,
     productDetails: productsDetailsReducer,
     cart: cartReducer,
-    userSignIn: userSigninReducer,
-    userSignUp: userSignupReducer
+    auth: authReducer,
+    error: errorReducer 
 })
 
 

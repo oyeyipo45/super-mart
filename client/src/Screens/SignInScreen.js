@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {signin} from "./../redux/actions/userActions";
 
 
 const SignInScreen = (props) => {
 
-  const [email, setEmail] = useState(" ");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const userSignIn = useSelector(state => state.userSignIn);
-  const { loading, userInfoLoLaine, error } = userSignIn;
-  
+ 
   
   const dispatch = useDispatch();
 
@@ -20,16 +17,15 @@ const SignInScreen = (props) => {
       return e.preventDefault(alert("Please Fill Fields"));
        } else {
         e.preventDefault()
-        dispatch(signin(email,password))
        }
   };
 
-  useEffect(() => {
-    if (userInfoLoLaine) {
-      props.history.push("/");
-    }
-    return () => {};
-  }, [userInfoLoLaine]);
+//   useEffect(() => {
+//     if (userInfoLoLaine) {
+//       props.history.push("/");
+//     }
+//     return () => {};
+//   }, [userInfoLoLaine]);
 
   return (
     <div className="form signin-form">
@@ -37,14 +33,14 @@ const SignInScreen = (props) => {
         <ul className="form-container ">
         <li>Sign in</li>
           <li>
-            {loading && 
+            {/* {loading && 
               <div className="alert alert-success"> Signing In ...</div>
             }
             {error && 
               <div className="alert alert-danger">
                {error.message}
               </div>
-            }
+            } */}
           </li>
           <li className="email-container">
             <label htmlFor="email">Email address:</label>

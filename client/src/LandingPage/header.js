@@ -1,20 +1,20 @@
 import React from "react";
 import {  Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from "../redux/actions/userActions";
+// import { logout } from "../redux/actions/userActions";
 
 const Header = (props) => {
 
-  const userSignIn = useSelector(state => state.userSignIn) 
-  const {userInfoLoLaine} = userSignIn;
+  const auth = useSelector(state => state.auth) 
+  const {user} = auth;
 
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const handleLogout = () => {
-    dispatch(logout());
-    console.log(props);
-  }
+  // const handleLogout = () => {
+  //   dispatch(logout());
+  //   console.log(props);
+  // }
 
   const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");
@@ -106,8 +106,9 @@ const Header = (props) => {
           </div>
           <div className="header-links">
             <Link to="/cart" className="cart-button"> Cart</Link>
-            {userInfoLoLaine ? <Link to="/signin" onClick={handleLogout}>{userInfoLoLaine.user.firstName}</Link> : <Link to="/signin" className="cart-button">Sign in</Link>}
-            
+            {/* {userInfoLoLaine ? <Link to="/signin" onClick={handleLogout}>{userInfoLoLaine.user.firstName}</Link> : <Link to="/signin" className="cart-button">Sign in</Link>} */}
+             {user ? <Link to="/" >{user.firstName}</Link> : <Link to="/signup" className="cart-button">Sign up</Link>}
+            {/* <Link className="cart-button" to="/signup">sign up</Link> */}
           </div>
         </div>
       </header>

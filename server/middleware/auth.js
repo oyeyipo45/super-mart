@@ -1,10 +1,6 @@
  import jwt from "jsonwebtoken"
 import config from "../config"
-// import dotenv from 'dotenv';
 
-// dotenv.config();
-// const secret = config.SECRET
-// console.log(secret);
 
 const auth  = (req, res, next) => {
     const token = req.header("x-auth-token");
@@ -12,7 +8,7 @@ const auth  = (req, res, next) => {
 
     //CHECK FOR TOKEN
     if(!token){
-        res.status(401).json({message: "No token, authorization denied"})
+       return  res.status(401).json({message: "No token, authorization denied"})
     }
 
     try {
