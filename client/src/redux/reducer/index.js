@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import {productListReducer, productsDetailsReducer} from "./productReducer";
+import {productListReducer, productsDetailsReducer, createProductReducer} from "./productReducer";
 import cartReducer from './cartReducer';
 import { authReducer } from './authReducer';
 import { errorReducer } from './errorReducer';
@@ -11,7 +11,8 @@ const rootReducer = combineReducers({
     productDetails: productsDetailsReducer,
     cart: cartReducer,
     auth: authReducer,
-    error: errorReducer 
+    error: errorReducer ,
+    createProduct: createProductReducer
 })
 
 

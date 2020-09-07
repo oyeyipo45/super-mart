@@ -7,8 +7,9 @@ const productSchema = new mongoose.Schema({
   price: { type: Number, default: 0, required: true },
   brand: { type: String, required: true },
   rating: { type: Number, default: 0, required: true },
+  description: { type: String, required: true },
   numReviews: { type: Number, default: 0, required: true },
-  countInStock: { type: Number, default: 0, required: true },
+  countInStock: { type: Number, default: 0, required: true }
 });
 
 const productModel = mongoose.model("products", productSchema);

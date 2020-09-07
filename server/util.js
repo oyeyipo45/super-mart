@@ -10,7 +10,7 @@ const getToken = (user) => {
       _id: user.id
     },
     config.SECRET,
-    { algorithm: 'HS256', expiresIn: 3660 }
+    { algorithm: 'HS256', expiresIn: '1h' }
   );
 };
 

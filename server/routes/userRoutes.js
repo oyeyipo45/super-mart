@@ -2,7 +2,7 @@ import express from "express";
 import User from "../models/userModel";
 import getToken from "../util";
 import bcrypt from "bcryptjs";
-import auth from "../middleware/auth";
+import {auth} from "../middleware/auth";
 
 const router = express.Router();
 
@@ -42,6 +42,7 @@ router.post("/signin", async (req, res) => {
         return res.status(400).json({ message: "Invalid Credentials" });
 
       res.json({
+        token: getToken(user),
         user: {
           _id: user.id,
           firstName: user.firstName,
@@ -96,7 +97,8 @@ router.post("/signup", async (req, res) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
-          newUser.save().then((user) => {
+          newUser.save()
+          .then((user) => {
            
             res.json({
               token: getToken(user),
@@ -105,8 +107,8 @@ router.post("/signup", async (req, res) => {
                 firstName: user.firstName,
                 lastName: user.lastName,
                 email: user.email,
-                token: getToken(user),
-              },
+                token: getToken(user)
+              }
             });
           });
         });

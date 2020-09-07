@@ -17,32 +17,29 @@ const SignUpScreen = (props) => {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     signup: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired
+    clearErrors: PropTypes.func.isRequired,
   };
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const error = useSelector((state) => state.error);
-  // const {message, status, id } = error;
-
-  // const clearErrors = useSelector((state) => state.clearErrors);
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // if (firstName === "" || lastName === "") {
-    //   return e.preventDefault(alert("Please Fill Fields"));
-    //   } else if (email === "" || password === "") {
-    //   return e.preventDefault(alert("Please Fill Fields"));
-    //     }  else {
-    //     e.preventDefault(alert("Please Fill Fields"))
-    // }
+    if (firstName === "" || lastName === "") {
+      return e.preventDefault(alert("Please Fill Fields"));
+    } else if (email === "" || password === "") {
+      return e.preventDefault(alert("Please Fill Fields"));
+    } else {
+      e.preventDefault(alert("Please Fill Fields"));
+    }
 
     //CREATE NEW USER
 
     if (password !== repassword) {
-      setErrorMessage( 'Passwords do not match' );
+      setErrorMessage("Passwords do not match");
     } else {
       const newUser = {
         firstName,
@@ -50,39 +47,32 @@ const SignUpScreen = (props) => {
         email,
         password,
       };
-  
-      dispatch(clearErrors())
-  
+
+      dispatch(clearErrors());
+
       //REGISTER USER
       dispatch(signup(newUser));
     }
-   
   };
 
   useEffect(() => {
-    
-      if (error.id === "SIGNUP_FAIL") {
-        setErrorMessage({ message: error.message.message });
-      } else {
-        setErrorMessage({ message: null });
-      }
+    if (error.id === "SIGNUP_FAIL") {
+      setErrorMessage({ message: error.message.message });
+    } else {
+      setErrorMessage({ message: null });
+    }
 
-      //IF AUTHENTICATED REDIRECT TO HOME
-       if (isAuthenticated) {
-       return  props.history.push("/");
-      }
-
-    
+    //IF AUTHENTICATED REDIRECT TO HOME
+    if (isAuthenticated) {
+      return props.history.push("/");
+    }
 
     return () => {};
-  }, [error.message.message], isAuthenticated);
+  }, [error.message.message, isAuthenticated]);
 
   const clearErrorAlert = () => {
-    dispatch(clearErrors())
-  }
-  
-
-  
+    dispatch(clearErrors());
+  };
 
   return (
     <div className="form signin-form">
@@ -90,20 +80,19 @@ const SignUpScreen = (props) => {
         <ul className="form-container ">
           <li>Create Account</li>
           <li>
-            {/*
-            {loading && (
-              <div className="alert alert-success"> Creating Account ...</div>
-            )}
-             */}
             {error.id ? (
               <div className="alert alert-danger alert-dismissible fade show">
-                <button type="button"  onClick ={clearErrorAlert()} className="close" data-dismiss="alert">
+                <button
+                  type="button"
+                  onClick={clearErrorAlert}
+                  className="close"
+                  data-dismiss="alert"
+                >
                   &times;
                 </button>
                 {error.message.message}
               </div>
-            ): null}
-            
+            ) : null}
           </li>
           <li className="email-container">
             <label htmlFor="email">First Name</label>

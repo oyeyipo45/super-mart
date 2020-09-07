@@ -13,11 +13,7 @@ const HomeScreen = (props) => {
 
   useEffect(() => {
     dispatch(listProducts());
-    // const fetchData = async () => {
-    //   const { data } = await axios.get("/api/products");
-    //   setProducts(data);
-    // };
-    // fetchData();
+    
 
     return () => {
       //
