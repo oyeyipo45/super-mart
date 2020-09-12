@@ -13,12 +13,7 @@ const SignUpScreen = (props) => {
   const [repassword, setRepassword] = useState("");
   const [errormessage, setErrorMessage] = useState(null);
 
-  SignUpScreen.propTypes = {
-    isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
-    signup: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired,
-  };
+
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
@@ -55,6 +50,7 @@ const SignUpScreen = (props) => {
     }
   };
 
+  const redirect = props.location.search ? props.location.search.split("=")[1] : "/"
   useEffect(() => {
     if (error.id === "SIGNUP_FAIL") {
       setErrorMessage({ message: error.message.message });
@@ -64,7 +60,7 @@ const SignUpScreen = (props) => {
 
     //IF AUTHENTICATED REDIRECT TO HOME
     if (isAuthenticated) {
-      return props.history.push("/");
+      return props.history.push(redirect);
     }
 
     return () => {};
@@ -153,6 +149,9 @@ const SignUpScreen = (props) => {
           <li>
             Already have an account? <Link to="/signin">Sign in</Link>
           </li>
+          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="signUp-link-text">
+              Create your Lolaine Account
+            </Link>
         </ul>
       </form>
     </div>

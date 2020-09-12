@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { listProducts } from "../redux/actions/productActions";
-import LandingPageCarousel from "./landingPageCarousel";
+import LandingPageCarousel from "./LandingPageCarousel";
 
 const HomeScreen = (props) => {
   // const [products, setProducts] = useState([]);

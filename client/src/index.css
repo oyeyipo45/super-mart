@@ -888,3 +888,29 @@ input {
   }
   
 }
+
+
+
+.checkoutSteps{
+  display: flex;
+  justify-content: space-between;
+  width: 40rem;
+  margin: 1rem auto;
+}
+
+
+
+
+
+.checkoutSteps > div {
+  border-top:  .3rem white solid;
+  color: gray;
+  flex: 1 1;
+  padding-top: 1rem
+}
+
+.checkoutSteps > div.active {
+  border-top:  .3rem red solid;
+  color: gray;
+  
+}

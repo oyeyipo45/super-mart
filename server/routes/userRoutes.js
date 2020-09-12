@@ -2,7 +2,7 @@ import express from "express";
 import User from "../models/userModel";
 import getToken from "../util";
 import bcrypt from "bcryptjs";
-import {auth} from "../middleware/auth";
+import { auth } from "../middleware/auth";
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get("/user", async (req, res) => {
 });
 
 // @route POST api/users
-// @desc REGISTER NEW USER
+// @desc SIGININ USER
 // @access PUBLIC
 
 router.post("/signin", async (req, res) => {
@@ -48,12 +48,14 @@ router.post("/signin", async (req, res) => {
           firstName: user.firstName,
           lastName: user.lastName,
           email: user.email,
-          token: getToken(user),
+          
         },
       });
     });
   });
 });
+
+
 
 // @route POST api/users/auth
 // @desc GET USER DATA
@@ -67,6 +69,8 @@ router.get("/signin/auth", auth, async (req, res) => {
     (error) => error.message;
   }
 });
+
+
 
 // @route POST api/users
 // @desc REGISTER NEW USER
@@ -106,8 +110,7 @@ router.post("/signup", async (req, res) => {
                 _id: user.id,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                email: user.email,
-                token: getToken(user)
+                email: user.email
               }
             });
           });
@@ -116,6 +119,8 @@ router.post("/signup", async (req, res) => {
     }
   });
 });
+
+
 
 router.get("/createadmin", async (req, res, next) => {
   try {

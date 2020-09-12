@@ -22,9 +22,9 @@ router.get("/:id", async (req, res, next) => {
   try {
     if (product) res.send(product);
     else res.status(404).send({ message: "product not found" });
-    console.log(product);
+   
   } catch (error) {
-    next(error);
+    next(error => {error.message, "here"});
   }
 });
 
@@ -36,12 +36,10 @@ router.post("/",auth, async (req, res) => {
     brand: req.body.brand,
     category: req.body.category,
     countInStock: req.body.countInStock,
-    description: req.body.description,
-    rating: req.body.rating,
-    numReviews: req.body.numReviews,
+    description: req.body.description
   });
 
-  console.log(product, "backend product");
+  
 
   const newProduct = await product.save();
 

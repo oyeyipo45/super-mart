@@ -3,7 +3,8 @@ import config from "../config"
 
 
 const auth  = (req, res, next) => {
-    const token = req.header("x-auth-token");
+    const token = req.headers.authorization;
+    console.log(token, "autth file");
 
 
     //CHECK FOR TOKEN
@@ -12,12 +13,16 @@ const auth  = (req, res, next) => {
     }
 
     try {
+        const onlyToken = token.slice(7, token.length);
         //VERIFY TOKEN
-    const decoded = jwt.verify(token, config.SECRET)
+         const decoded = jwt.verify(onlyToken, config.SECRET)
 
     //ADD USER FROM PAYLOAD
     req.user = decoded
+
+    
     next();
+
     } catch (error) {
         res.status(400).json({message: "TOKEN IS NOT VALID"})
     }
@@ -25,7 +30,7 @@ const auth  = (req, res, next) => {
 
 
 const isAdmin = (req, res, next) => {
-    const token = req.header("x-auth-token");
+    const token = req.header.authorization;
     const isAdmin = req.body.isAdmin;
 
 
@@ -41,7 +46,7 @@ const isAdmin = (req, res, next) => {
         return next();
     }
     } catch (error) {
-        res.status(400).json({message: "ADMIN TOKEN IS NOT VALID"})
+        res.status(401).json({message: "ADMIN TOKEN IS NOT VALID"})
     }
 }
 

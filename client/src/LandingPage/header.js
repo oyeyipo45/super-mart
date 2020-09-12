@@ -104,6 +104,12 @@ const Header = (props) => {
               <h1>LOLAINE</h1>
             </Link>
           </div>
+
+           <div className="header-links">
+            <Link to="/payStack-payment">
+              <h1>payment</h1>
+            </Link>
+          </div>
           <div className="header-links">
             <Link to="/cart" className="cart-button"> Cart</Link>
               

@@ -13,11 +13,8 @@ import {
 
 //CHECK LOAD USER
 const loadUser = () => (dispatch, getState) => {
-
-
   //USER LOADING
   dispatch({ type: USER_LOADING });
-
 
   //FETCH USER
   axios
@@ -36,13 +33,10 @@ const loadUser = () => (dispatch, getState) => {
     });
 };
 
-
-
 //SIGN IN
-const signin = ({ email, password }) => dispatch => {
-
-   //HEADERS
-   const config = {
+const signin = ({ email, password }) => (dispatch) => {
+  //HEADERS
+  const config = {
     headers: {
       "Content-Type": "application/json",
     },
@@ -52,34 +46,31 @@ const signin = ({ email, password }) => dispatch => {
   const body = JSON.stringify({ email, password });
 
   console.log(body, "signin user");
-  
 
   axios
-  .post("api/users/signin", body, config)
-  .then((res) =>
-    dispatch({
-      type: USER_SIGNIN_SUCCESS,
-      payload: res.data,
-    })
-  )
-  .catch((error) => {
-    dispatch(
-      returnErrors(error.response.data, error.response.status, "SIGNIN_FAIL")
-    );
-    dispatch({
-      type: USER_SIGNIN_FAIL,
+    .post("api/users/signin", body, config)
+    .then((res) =>
+      dispatch({
+        type: USER_SIGNIN_SUCCESS,
+        payload: res.data,
+      })
+    )
+    .catch((error) => {
+      dispatch(
+        returnErrors(error.response.data, error.response.status, "SIGNIN_FAIL")
+      );
+      dispatch({
+        type: USER_SIGNIN_FAIL,
+      });
     });
-  });
 };
-
-
 
 //SIGN UP USER
 const signup = ({ firstName, lastName, email, password }) => (dispatch) => {
   //HEADERS
   const config = {
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
   };
 
@@ -111,7 +102,7 @@ const signup = ({ firstName, lastName, email, password }) => (dispatch) => {
 
 const tokenConfig = (getState) => {
   //GET TOKEN FROM LOCALSTORAGE
-  const token = getState().auth.token;
+  const token = getState().auth;
 
   //HEADER
   const config = {
@@ -122,9 +113,9 @@ const tokenConfig = (getState) => {
 
   //IF TOKEN AVAILABLE ADD TO HEADERS
   if (token) {
-    config.headers["x-auth-token"] = token;
+    config.headers["authorization"] = "Bearer " + token.token;
   }
-
+  console.log(config, "conrigggggg");
   return config;
 };
 

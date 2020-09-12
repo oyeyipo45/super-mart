@@ -13,8 +13,6 @@ const CreateProductScreen = (props) => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState("");
   const [description, setDescription] = useState("");
-  const [rating, setRating] = useState("");
-  const [numReviews, setNumReviews] = useState("");
  
 //   const createProduct = useSelector((state) => state.createProduct);
   const error = useSelector((state) => state.error);
@@ -35,8 +33,6 @@ e.preventDefault()
         category,
         countInStock,
         description,
-        rating,
-        numReviews
       };
 
       dispatch(clearErrors());
@@ -160,26 +156,7 @@ e.preventDefault()
 
             </textarea>
           </li>
-          <li className="email-container">
-            <label htmlFor="Rating">Rating</label>
-            <input
-              type="text"
-              name="Rating"
-              id="Rating"
-              placeholder="Rating"
-              onChange={(e) => setRating(e.target.value)}
-            ></input>
-          </li>
-          <li className="email-container">
-            <label htmlFor="numReview">numReview</label>
-            <input
-              type="text"
-              name="numReview"
-              id="numReview"
-              placeholder="numReview"
-              onChange={(e) => setNumReviews(e.target.value)}
-            ></input>
-          </li>
+         
 
           <li>
             <button type="submit" className="signin-button">

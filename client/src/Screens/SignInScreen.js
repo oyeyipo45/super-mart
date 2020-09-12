@@ -34,6 +34,7 @@ const SignInScreen = (props) => {
     dispatch(signin(newUser));
   };
 
+  const redirect = props.location.search ? props.location.search.split("=")[1] : "/"
   useEffect(() => {
     if (error.id === "LOGIN_FAIL") {
       setErrorMessage({ message: error.message.message });
@@ -43,9 +44,9 @@ const SignInScreen = (props) => {
 
     //IF AUTHENTICATED REDIRECT TO HOME
     if (isAuthenticated) {
-      return props.history.push("/");
+      return props.history.push(redirect);
     }
-
+ 
     return () => {};
   }, [error.message.message, isAuthenticated]);
 
@@ -101,7 +102,7 @@ const SignInScreen = (props) => {
           </li>
           <li className="forgot-password">Forgot your Password ?</li>
           <li className="signUp-link">
-            <Link to="/signup" className="signUp-link-text">
+            <Link to={redirect === "/" ? "signup" : "signup?redirect=" + redirect} className="signUp-link-text">
               Create your Lolaine Account
             </Link>
           </li>

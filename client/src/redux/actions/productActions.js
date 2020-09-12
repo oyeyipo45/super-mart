@@ -26,10 +26,12 @@ const listProducts = () => async (dispatch) => {
   }
 };
 
-const detailsProduct = (productId) => async (dispatch) => {
+const detailsProduct = (productId) => async (dispatch, getState) => {
+   console.log(tokenConfig(getState));
+  
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
-    const { data } = await axios.get(`/api/products/${productId}`);
+    const { data } = await axios.get(`/api/products/${productId}` , tokenConfig(getState));
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.message });
@@ -37,15 +39,7 @@ const detailsProduct = (productId) => async (dispatch) => {
 };
 
 const createProduct = (createproduct) => async (dispatch, getState) => {
-  //HEADERS
-  const config = {
-    headers: {
-      "Content-Type": "application/json"
-      
-    }
-    
   
-  };
 
   //REQUEST BODY
   const product = JSON.stringify(createproduct);

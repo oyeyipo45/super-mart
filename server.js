@@ -2,6 +2,7 @@ import express from "express";
 // import data from "./data/data";
 import config from "./server/config";
 import mongoose from "mongoose";
+import paymentRoute from "./server/routes/paymentRoutes"
 import userRoute from "./server/routes/userRoutes";
 import productRoute from "./server/routes/productRoutes";
 import morgan from "morgan";
@@ -25,8 +26,18 @@ app.use(express.json());
 app.use(morgan("tiny"))
 app.use("/api/products", productRoute)
 app.use("/api/users", userRoute)
+app.use("/api/paystack", paymentRoute)
 
-
+//SETTING HEADERS FOR CORS
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    );
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
+    next();
+  });
 
 //connecting to MONGO
 mongoose.connect(mongodbUrl, {
