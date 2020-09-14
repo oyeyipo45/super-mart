@@ -1,5 +1,4 @@
 import express from "express";
-// import data from "./data/data";
 import config from "./server/config";
 import mongoose from "mongoose";
 import paymentRoute from "./server/routes/paymentRoutes"
