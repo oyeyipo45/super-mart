@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { loadUser } from "./redux/actions/authActions";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Index from './LandingPage/index';
+import Index from './LandingPage/Index';
 
 const App = () => {
 
