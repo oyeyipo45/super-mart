@@ -12,30 +12,24 @@ const PaymentScreen = (props) => {
    
     const [message, setErrorMessage] = useState(null);
   
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  
+   
     const error = useSelector((state) => state.error);
   
     const dispatch = useDispatch();
   
     const submitHandler = (e) => {
-      if (paymentMethod || "") {
-        return e.preventDefault(alert("Please Fill Fields"));
-      } else {
+   
         e.preventDefault();
-      }
+      
+  //REGISTER USER
+  dispatch(savePayment({paymentMethod}));
+      
   
-      //SIGN IN USER
-      const newUser = {
-       paymentMethod
-      };
+      // dispatch(clearErrors());
   
-      dispatch(clearErrors());
-  
-      //REGISTER USER
-      dispatch(savePayment({paymentMethod}));
-      //REDIRECT USER TO PAYMENT
-      props.history.push("/payment")
+      
+      //REDIRECT USER TO PLACEORDER
+      props.history.push("/placeOrder")
     };
   
     // const redirect = props.location.search ? props.location.search.split("=")[1] : "/"
@@ -53,7 +47,7 @@ const PaymentScreen = (props) => {
     //   }
    
       return () => {};
-    }, [error.message.message, isAuthenticated]);
+    }, []);
   
     const clearErrorAlert = () => {
       dispatch(clearErrors());
@@ -67,21 +61,7 @@ const PaymentScreen = (props) => {
             <form onSubmit={submitHandler}>
               <ul className="form-container ">
                 <li>Payment</li>
-                {/* <li>
-                  {error.id ? (
-                    <div className="alert alert-danger alert-dismissible fade show">
-                      <button
-                        type="button"
-                        onClick={clearErrorAlert}
-                        className="close"
-                        data-dismiss="alert"
-                      >
-                        &times;
-                      </button>
-                      {error.message.message}
-                    </div>
-                  ) : null}
-                </li> */}
+               
                 <li className="email-container">
                  <div>
                  <label htmlFor="paymentMethod">Paypal:</label>
@@ -97,9 +77,9 @@ const PaymentScreen = (props) => {
                 
                 
                 <li>
-                  <Link to="/placeOrder" ><button type="submit" className="signin-button">
+                  <button type="submit" className="signin-button">
                     Continue
-                  </button></Link>
+                  </button>
                 </li>
                
               </ul>

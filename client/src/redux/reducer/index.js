@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     productDetails: productsDetailsReducer,
     cart: cartReducer,
     auth: authReducer,
-    error: errorReducer ,
+    error: errorReducer,
     createProduct: createProductReducer
 })
 

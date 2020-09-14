@@ -42,7 +42,11 @@ export const removeFromCart = (productId) => (dispatch, getState) => {
 
 export const saveShipping = (data) => (dispatch) => {
   dispatch({type: CART_SAVE_SHIPPING, payload : data})
+
+  // const {shipping} = getState();
+  // Cookie.set("shipping", JSON.stringify(shipping));
 }
+
 
 
 export const savePayment = (data) => (dispatch) => {

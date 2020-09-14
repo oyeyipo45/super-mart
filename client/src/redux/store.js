@@ -10,7 +10,7 @@ console.log(cartItems, "inside store");
 
 
 
-const initialState = { cartItems };
+const initialState = { cartItems, shipping: {}, payment: {} };
 
 const middleWare = [thunk];
 

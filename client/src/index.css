@@ -889,7 +889,7 @@ input {
   
 }
 
-
+/* ******************************  CHECKOUT STEPS **************************8 */
 
 .checkoutSteps{
   display: flex;
@@ -914,3 +914,4 @@ input {
   color: gray;
   
 }
+

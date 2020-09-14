@@ -28,7 +28,7 @@ const ShippingScreen = (props) => {
       }
   
       //SIGN IN USER
-      const newUser = {
+      const userAddress = {
         address,
         city,
         postalCode,
@@ -38,7 +38,7 @@ const ShippingScreen = (props) => {
       dispatch(clearErrors());
   
       //REGISTER USER
-      dispatch(saveShipping(newUser));
+      dispatch(saveShipping(userAddress));
       //REDIRECT USER TO PAYMENT
       props.history.push("/payment")
     };

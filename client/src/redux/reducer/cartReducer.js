@@ -5,7 +5,7 @@ import {
   CART_SAVE_PAYMENT,
 } from "./../constants/cartConstants";
 
-const cartReducer = (state = { cartItems: [] }, action) => {
+const cartReducer = (state = { cartItems: [], shipping : {}, payment : {} }, action) => {
   switch (action.type) {
     case CART_ADD_ITEM:
       const item = action.payload;
@@ -14,6 +14,7 @@ const cartReducer = (state = { cartItems: [] }, action) => {
 
       if (product) {
         return {
+          ...state,
           cartItems: state.cartItems.map((itemFound) =>
             itemFound.id === product.id ? item : itemFound
           ),
@@ -22,6 +23,7 @@ const cartReducer = (state = { cartItems: [] }, action) => {
       return { cartItems: [...state.cartItems, item] };
     case CART_REMOVE_ITEM:
       return {
+        ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
       };
     case CART_SAVE_SHIPPING:
