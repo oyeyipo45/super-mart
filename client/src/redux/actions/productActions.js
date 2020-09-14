@@ -22,6 +22,7 @@ const listProducts = () => async (dispatch) => {
     const { data } = await axios.get("/api/products");
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   } catch (error) {
+    dispatch(returnErrors(error.response.data, error.response.status));
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
   }
 };
@@ -34,6 +35,7 @@ const detailsProduct = (productId) => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/products/${productId}` , tokenConfig(getState));
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
+    dispatch(returnErrors(error.response.data, error.response.status));
     dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.message });
   }
 };

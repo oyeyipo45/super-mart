@@ -3,6 +3,7 @@ import config from "./server/config";
 import mongoose from "mongoose";
 import paymentRoute from "./server/routes/paymentRoutes"
 import userRoute from "./server/routes/userRoutes";
+import orderRoute from "./server/routes/orderRoutes";
 import productRoute from "./server/routes/productRoutes";
 import morgan from "morgan";
 import path from "path";
@@ -26,6 +27,7 @@ app.use(morgan("tiny"))
 app.use("/api/products", productRoute)
 app.use("/api/users", userRoute)
 app.use("/api/paystack", paymentRoute)
+app.use('/api/orders', orderRoute);
 
 //SETTING HEADERS FOR CORS
 app.use((req, res, next) => {

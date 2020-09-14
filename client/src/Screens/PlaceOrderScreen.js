@@ -4,34 +4,39 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
+import { createOrder } from '../redux/actions/orderAction'
 
 const PlaceOrderScreen = (props) => {
   const cart = useSelector((state) => state.cart);
-
+  const orderCreate = useSelector(state => state.orderCreate)
   const { cartItems, shipping, payment } = cart;
+  const {loading, success, error, order } = orderCreate
 
   console.log(shipping);
 
   const dispatch = useDispatch();
-
+  if(!shipping.address) {
+    props.history.push("/shipping")
+} else if (!payment.paymentMethod) {
+    props.history.push("/payment")
+}
   useEffect(() => {
-   
-    if(!shipping.address) {
-        props.history.push("/shipping")
-    } else if (!payment.paymentMethod) {
-        props.history.push("/payment")
-    }
-      // dispatch(saveShipping());
+   if(success){
+     props.history.push('/order/' + order._id)
+   }
     
-  }, []);
+    
+    
+  }, [success]);
 
   const itemsPrice = cartItems.reduce((a,c) => a + c.price * c.qty, 0)
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const  taxPrice = 0.15 * itemsPrice;
   const totalPrice  = itemsPrice +shippingPrice + taxPrice
- 
+
   const placeOrderHandler = () => {
     //CREATE AN ORDER
+    dispatch(createOrder({orderItems: cartItems, shipping, payment, itemsPrice, shippingPrice, taxPrice, totalPrice}))
   };
 
   return (
