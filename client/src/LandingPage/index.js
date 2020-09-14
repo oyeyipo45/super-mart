@@ -10,7 +10,6 @@ const  Index = () => {
     return (
         <div className="parent">
     < Header />
-    {/* <SideBar /> */}
       <Body />
       <Footer />
         </div>

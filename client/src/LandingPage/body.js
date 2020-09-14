@@ -6,10 +6,10 @@ import CartScreen from '../screens/CartScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import HomeScreen from '../screens/HomeScreen';
 import ShippingScreen from '../screens/ShippingScreen';
-import CreateProductScreen from './../screens/CreateProductScreen';
-import paystackPaymentScreen from './../screens/PaystackPaymentScreen';
-import PaymentScreen from './../screens/PaymentScreen';
-import PlaceOrderScreen from './../screens/PlaceOrderScreen'
+import CreateProductScreen from '../screens/CreateProductScreen';
+import paystackPaymentScreen from '../screens/PaystackPaymentScreen';
+import PaymentScreen from '../screens/PaymentScreen';
+import PlaceOrderScreen from '../screens/PlaceOrderScreen';
 
 const Body = () => {
     return (

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Index from "./landingPage/index";
 import { loadUser } from "./redux/actions/authActions";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import Index from './LandingPage/index';
 
 const App = () => {
 

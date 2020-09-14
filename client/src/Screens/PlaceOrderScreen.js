@@ -17,19 +17,21 @@ const PlaceOrderScreen = (props) => {
   useEffect(() => {
    
     if(!shipping.address) {
-        props.history.push("/payUp")
-    }
-
-    if(!payment.paymentMethod) {
+        props.history.push("/shipping")
+    } else if (!payment.paymentMethod) {
         props.history.push("/payment")
     }
       // dispatch(saveShipping());
     
   }, []);
 
+  const itemsPrice = cartItems.reduce((a,c) => a + c.price * c.qty, 0)
+  const shippingPrice = itemsPrice > 100 ? 0 : 10;
+  const  taxPrice = 0.15 * itemsPrice;
+  const totalPrice  = itemsPrice +shippingPrice + taxPrice
  
-  const checkoutHandler = () => {
-    props.history.push(`/signin?redirect=shipping`);
+  const placeOrderHandler = () => {
+    //CREATE AN ORDER
   };
 
   return (
@@ -42,10 +44,10 @@ const PlaceOrderScreen = (props) => {
                 Shipping
             </h3>
             <div>
-                {shipping.address} ,
-                 {shipping.city} ,
-                 {shipping.postalCode} ,
-                 {shipping.country}
+                {shipping.address}, 
+                 { shipping.city},  
+                 { shipping.postalCode}, 
+                 { shipping.country}
             </div>
             <div>
                 <h3>Payment</h3>
@@ -96,34 +98,40 @@ const PlaceOrderScreen = (props) => {
       <div className="placeOrder-action">
         <ul>
           <li className="cart-action-summary">
-            <h3>Summary</h3>
+            <h3>Order Summary</h3>
           </li>
 
           <li className="cart-action-subTotal">
             <p>
-              Sub Total ( {cartItems.reduce((a, c) => a + Number(c.qty), 0)}{" "}
-              items)
+             Items
             </p>
-            <p> ${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</p>
+            <p> ${itemsPrice}</p>
+          </li>
+
+          <li className="cart-action-subTotal">
+            <p>
+            Shipping
+            </p>
+            <p> ${shippingPrice}</p>
           </li>
 
           <li className="cart-action-total">
-            <p>VAT </p>
-            <p>${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</p>
+            <p>Tax </p>
+            <p>${taxPrice}</p>
           </li>
 
           <li className="cart-action-total">
-            <p>Total </p>
-            <p>${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</p>
+            <p>Order Total </p>
+            <p>${totalPrice}</p>
           </li>
 
           <li>
             <button
-              onClick={checkoutHandler}
+              onClick={placeOrderHandler}
               className="full-width button primary"
-              disabled={cartItems.length === 0}
+              
             >
-              Proceed To Checkout
+              Place Order
             </button>
           </li>
         </ul>
