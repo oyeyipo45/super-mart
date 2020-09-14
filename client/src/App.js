@@ -7,7 +7,7 @@ import Index from './LandingPage/index';
 
 const App = () => {
 
-  //LOAD USER ON EVERY COMPONENT RENDER
+  //LOAD USER ON EVERY COMPONENT RENDER IN APP
   useEffect(() => {
     store.dispatch(loadUser());
     return () => {
