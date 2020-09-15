@@ -10,9 +10,9 @@ const PlaceOrderScreen = (props) => {
   const cart = useSelector((state) => state.cart);
   const orderCreate = useSelector(state => state.orderCreate)
   const { cartItems, shipping, payment } = cart;
-  const {loading, success, error, order } = orderCreate
+  const {loading, success, error, order } = orderCreate;
 
-  console.log(shipping);
+  console.log(cartItems, order);
 
   const dispatch = useDispatch();
   if(!shipping.address) {

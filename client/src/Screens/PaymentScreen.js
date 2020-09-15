@@ -11,8 +11,6 @@ const PaymentScreen = (props) => {
     const [paymentMethod, setPaymentMethod] = useState("");
    
     const [message, setErrorMessage] = useState(null);
-  
-   
     const error = useSelector((state) => state.error);
   
     const dispatch = useDispatch();

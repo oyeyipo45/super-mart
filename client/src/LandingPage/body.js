@@ -10,6 +10,7 @@ import CreateProductScreen from '../screens/CreateProductScreen';
 import paystackPaymentScreen from '../screens/PaystackPaymentScreen';
 import PaymentScreen from '../screens/PaymentScreen';
 import PlaceOrderScreen from '../screens/PlaceOrderScreen';
+import OrderScreen from './../screens/OrderScreen';
 
 const Body = () => {
     return (
@@ -27,6 +28,7 @@ const Body = () => {
           <Route path="/createProduct/" component={CreateProductScreen} />
           <Route path="/payment/" component={PaymentScreen} />
           <Route path="/payStack-payment/" component={paystackPaymentScreen} />
+          <Route path="/order/:id" component={OrderScreen} />
         </div>
       </main>
         </div>
