@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors"
 import config from "./config";
 import mongoose from "mongoose";
-// import paymentRoute from "./server/routes/paymentRoutes"
 import userRoute from "./routes/userRoutes";
 import orderRoute from "./routes/orderRoutes";
 import productRoute from "./routes/productRoutes";
@@ -28,7 +27,6 @@ app.use(cors())
 app.use(morgan("tiny"))
 app.use("/api/products", productRoute)
 app.use("/api/users", userRoute)
-// app.use("/api/paystack", paymentRoute)
 app.use('/api/orders', orderRoute);
 app.use('/api/config/paypal', (req, res) => {
     res.send(config.PAYPAL_CLIENT_ID)
