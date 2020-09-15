@@ -1,5 +1,5 @@
 {
-  "name": "e_commerce",
+  "name": "lolaineventures",
   "version": "1.0.0",
   "description": "E Commerce Website",
   "main": "index.js",
@@ -7,18 +7,19 @@
     "client-install": "npm install --prefix client",
     "start": "nodemon --watch backend --exec babel-node server/server.js",
     "build": "rm -rf dist && babel server -d dist",
-    "heroku-postbuild": "npm run build && client && npm install && npm run build"
+    "heroku-postbuild": "npm run build && cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oyeyipo45/E_COMMERCE.git"
+    "url": "git+https://github.com/oyeyipo45/lolaineventures.git"
+    
   },
   "author": "Damilola Oyeyipo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/oyeyipo45/E_COMMERCE/issues"
+    "url": "https://github.com/oyeyipo45/lolaineventures/issues"
   },
-  "homepage": "https://github.com/oyeyipo45/E_COMMERCE#readme",
+  "homepage": "https://github.com/oyeyipo45/lolaineventures#readme",
   "engines" : {
     "node" : "12.4.0",
      "npm": "6.9.0"
