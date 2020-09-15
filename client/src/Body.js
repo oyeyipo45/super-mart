@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import ProductScreen from "../screens/ProductScreen";
-import SignInScreen from "../screens/SignInScreen";
-import CartScreen from '../screens/CartScreen';
-import SignUpScreen from '../screens/SignUpScreen';
-import HomeScreen from '../screens/HomeScreen';
-import ShippingScreen from '../screens/ShippingScreen';
-import CreateProductScreen from '../screens/CreateProductScreen';
-// import paystackPaymentScreen from '../screens/PaystackPaymentScreen';
-import PaymentScreen from '../screens/PaymentScreen';
-import PlaceOrderScreen from '../screens/PlaceOrderScreen';
-import OrderScreen from './../screens/OrderScreen';
+import ProductScreen from "./screens/ProductScreen";
+import SignInScreen from "./screens/SignInScreen";
+import CartScreen from './screens/CartScreen';
+import SignUpScreen from './screens/SignUpScreen';
+import HomeScreen from './screens/HomeScreen';
+import ShippingScreen from './screens/ShippingScreen';
+import CreateProductScreen from './screens/CreateProductScreen';
+// import paystackPaymentScreen from './screens/PaystackPaymentScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrderScreen from './screens/OrderScreen';
 
 const Body = () => {
     return (

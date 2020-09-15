@@ -1,7 +1,7 @@
 import React from "react";
 import {  Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from "../redux/actions/authActions";
+import { logout } from "./redux/actions/authActions";
 
 const Header = (props) => {
 

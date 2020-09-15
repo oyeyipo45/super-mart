@@ -1,7 +1,7 @@
 import React from 'react'
-import Footer from "./landingpage/Footer";
-import Header from './landingpage/Header';
-import Body from "./landingpage/Body";
+import Footer from "./Footer";
+import Header from './Header';
+import Body from "./Body";
 
 
 
