@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { loadUser } from "./redux/actions/authActions";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Index from './landingpage/Index';
+import Main from './landingpage/Main';
 
 const App = () => {
 
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className="grid-container">
-        <Index />
+        <Main />
       </div>
     </Provider>
   );

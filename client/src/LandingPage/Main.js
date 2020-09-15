@@ -5,7 +5,7 @@ import Body from "./Body";
 
 
 
-const  Index = () => {
+const  Main = () => {
     return (
         <div className="parent">
     < Header />
@@ -15,4 +15,4 @@ const  Index = () => {
     )
 }
 
-export default Index;
+export default Main;
