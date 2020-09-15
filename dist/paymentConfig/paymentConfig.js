@@ -1,6 +1,5 @@
 // const paystack = (request) => {
 //     const MySecretKey = 'Bearer sk_test_2d2839670986275fd8472be7afeeba492811bcf7';
-  
 //     const initializePayment = (form, mycallback) => {
 //       const options = {
 //         url : 'https://api.paystack.co/transaction/initialize',
@@ -14,10 +13,8 @@
 //       const callback = (error, response, body) => {
 //         return mycallback(error, body);
 //       }
-  
 //       request.post(options,callback)
 //     }
-  
 //     const verifyPayment = (ref, mycallback) => {
 //       const options = {
 //         url: 'https://api.paystack.co/transaction/verify/'+encodeURIComponent(ref ),
@@ -30,11 +27,9 @@
 //       const callback = (error, response, body) => {
 //         return mycallback(error, body);
 //       }
-  
 //       request(options, callback)
 //     }
-  
 //     return {initializePayment, verifyPayment}
 //   }
-  
 //   module.exports = paystack
+"use strict";

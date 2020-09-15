@@ -9,7 +9,7 @@ router.get('/:id', auth, async (req, res) => {
    try {
     if(order){
         res.send(order)
-        console.log(order);
+
     }
    } catch (error) {
        console.log(error);
@@ -19,7 +19,7 @@ router.get('/:id', auth, async (req, res) => {
 
 router.post('/', auth, async (req, res) => {
 
-    console.log(req.params, "roductsssss")
+
    try {
     const newOrder = new Order({
         orderItems: req.body.orderItems,
@@ -33,12 +33,38 @@ router.post('/', auth, async (req, res) => {
     })
 
     const newOrderCreated = await newOrder.save()
-    console.log(newOrderCreated);
+   
     res.status(201).send({message: "newOrderCreated", data: newOrderCreated})
    } catch (error) {
        console.log(error);
    }
 })
 
+
+router.put('/:id/pay', auth, async (req, res) => {
+
+  const order = await Order.findById(req.params.id);
+  try {
+    if(order){
+        order.isPaid = true;
+        order.isPaid = Date.now()
+        order.payment = {
+            paymentMethod: 'paypal',
+            paymentResult: {
+              payerID: req.body.payerID,
+              orderID : req.body.orderID,
+              paymentID :  req.body.paymentID
+            }
+            
+        }
+  
+        const updatedOrder = await order.save()
+    res.send({message : "Order Paid", order : updatedOrder})
+    }
+   
+  } catch (error) {
+      res.status
+  }
+})
 
 export default router;

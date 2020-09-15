@@ -1,10 +1,11 @@
 import express from "express";
-import config from "./server/config";
+import cors from "cors"
+import config from "./config";
 import mongoose from "mongoose";
-import paymentRoute from "./server/routes/paymentRoutes"
-import userRoute from "./server/routes/userRoutes";
-import orderRoute from "./server/routes/orderRoutes";
-import productRoute from "./server/routes/productRoutes";
+// import paymentRoute from "./server/routes/paymentRoutes"
+import userRoute from "./routes/userRoutes";
+import orderRoute from "./routes/orderRoutes";
+import productRoute from "./routes/productRoutes";
 import morgan from "morgan";
 import path from "path";
 
@@ -23,11 +24,17 @@ app.use(express.json());
 
 
 //APPLY MIDDLEWARE
+app.use(cors())
 app.use(morgan("tiny"))
 app.use("/api/products", productRoute)
 app.use("/api/users", userRoute)
-app.use("/api/paystack", paymentRoute)
+// app.use("/api/paystack", paymentRoute)
 app.use('/api/orders', orderRoute);
+app.use('/api/config/paypal', (req, res) => {
+    res.send(config.PAYPAL_CLIENT_ID)
+});
+
+
 
 //SETTING HEADERS FOR CORS
 app.use((req, res, next) => {

@@ -3,7 +3,7 @@ import {productListReducer, productsDetailsReducer, createProductReducer} from "
 import cartReducer from './cartReducer';
 import { authReducer } from './authReducer';
 import { errorReducer } from './errorReducer';
-import { orderCreateReducer, orderDetailsReducer } from "./orderReducers";
+import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from "./orderReducers";
 
 
 
@@ -15,7 +15,8 @@ const rootReducer = combineReducers({
     error: errorReducer,
     createProduct: createProductReducer,
     orderCreate : orderCreateReducer,
-    orderDetails: orderDetailsReducer
+    orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer
 })
 
 
