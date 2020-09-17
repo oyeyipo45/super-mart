@@ -6,17 +6,17 @@ import { auth } from "../middleware/auth";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((error) => res.json("error from res", error));
-});
+// router.get("/", async (req, res) => {
+//   User.find()
+//     .then((users) => res.json(users))
+//     .catch((error) => res.json("error from res", error));
+// });
 
-router.get("/user", async (req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((error) => res.json("error from res", error));
-});
+// router.get("/user", async (req, res) => {
+//   User.find()
+//     .then((users) => res.json(users))
+//     .catch((error) => res.json("error from res", error));
+// });
 
 // @route POST api/users
 // @desc SIGININ USER
