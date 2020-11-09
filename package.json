@@ -6,11 +6,13 @@
   "scripts": {
     "start": "nodemon --watch server --exec babel-node server/server.js",
     "build": "rm -rf dist && babel server -d dist",
-    "heroku-postbuild": "npm install && cd client && npm run build && npm run build"
+    "heroku-postbuild": "npm run build && cd client && npm install && npm run build"
+    
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oyeyipo45/lolaineventures.git"
+    
   },
   "author": "Damilola Oyeyipo",
   "license": "ISC",
@@ -18,10 +20,10 @@
     "url": "https://github.com/oyeyipo45/lolaineventures/issues"
   },
   "homepage": "https://github.com/oyeyipo45/lolaineventures#readme",
-  "engines": {
-    "node": "12.4.0",
-    "npm": "6.9.0"
-  },
+  "engines" : {
+    "node" : "12.4.0",
+     "npm": "6.9.0"
+    },
   "keywords": [],
   "dependencies": {
     "bcryptjs": "^2.4.3",
