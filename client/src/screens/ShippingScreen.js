@@ -64,7 +64,7 @@ const ShippingScreen = (props) => {
       dispatch(clearErrors());
     };
     return (
-        <div >
+        <div>
             <CheckoutSteps step1 step2 >
             
             </CheckoutSteps>
